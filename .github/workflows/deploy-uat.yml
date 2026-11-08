@@ -1,15 +1,15 @@
 # CaseDesk deploy to UAT (FR14, research R16, constitution VI).
 #
-# Trigger choice: push to main + reusable CI (`uses: ./.github/workflows/ci.yml`), not
+# Trigger choice: push to master + reusable CI (`uses: ./.github/workflows/ci.yml`), not
 # `workflow_run`. Why:
 #   - The deploy job `needs: ci`, so a failing test visibly blocks deployment in the same run.
 #   - The artifact comes from the same run, so no run-id / github-token cross-run download.
 #   - workflow_run always runs the workflow file from the default branch and also fires for CI
-#     runs started by PRs (including fork PRs from a branch called "main"), so it needs extra
+#     runs started by PRs (including fork PRs from a branch called "master"), so it needs extra
 #     `event == 'push'` guards. Its one advantage, a single shared CI run, we keep by excluding
-#     main from ci.yml's own `push` trigger.
+#     master from ci.yml's own `push` trigger.
 #   (workflow_run alternative: `on: workflow_run: { workflows: [CI], types: [completed],
-#    branches: [main] }`, guard `github.event.workflow_run.conclusion == 'success' &&
+#    branches: [master] }`, guard `github.event.workflow_run.conclusion == 'success' &&
 #    github.event.workflow_run.event == 'push'`, then actions/download-artifact with
 #    `run-id: ${{ github.event.workflow_run.id }}` and `github-token: ${{ github.token }}`
 #    plus `actions: read` permission.)
@@ -19,7 +19,7 @@ name: Deploy UAT
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   workflow_dispatch:
 
 permissions:
@@ -38,6 +38,10 @@ jobs:
   deploy:
     name: Import managed solution to UAT
     needs: ci
+    # Off until UAT is set up: create repository variable UAT_DEPLOY_ENABLED = true
+    # (Settings > Secrets and variables > Actions > Variables). Until then this job is skipped,
+    # not failed. A manual run (workflow_dispatch) always tries to deploy.
+    if: vars.UAT_DEPLOY_ENABLED == 'true' || github.event_name == 'workflow_dispatch'
     runs-on: windows-latest
     # Add required reviewers / wait timers to the "uat" environment in repo settings.
     # Secrets PP_* can be environment-scoped secrets on "uat".

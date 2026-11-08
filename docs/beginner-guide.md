@@ -19,7 +19,7 @@ You can stop after any part and come back later. Parts 1–3 need nothing but yo
 | [9. The Azure side](#part-9-the-azure-side-caseclosed-integration) | Closed cases reach an external system | Azure subscription |
 | [10. Save Dataverse's version back to Git](#part-10-save-dataverses-version-back-to-git) | Repo matches the environment | Part 5 |
 | [11. Walkthroughs and films](#part-11-browser-walkthroughs-and-films) | A captioned guide film | Parts 6–9 |
-| [12. Deploy to UAT with GitHub](#part-12-deploy-to-uat-with-github-actions) | Merge to `main` = managed deploy | A second environment |
+| [12. Deploy to UAT with GitHub](#part-12-deploy-to-uat-with-github-actions) | Merge to `master` = managed deploy | A second environment |
 | [13. When something goes wrong](#part-13-when-something-goes-wrong) | Where to look | — |
 
 ---
@@ -387,7 +387,7 @@ git diff          # read it: mostly formatting the first time
 Then rebuild (Part 3) and run the tests to prove the synced version still packs. Commit it.
 
 **From now on, the loop is:** change something (in code, or in the maker portal in Dev) →
-`pac solution sync` → build and test → commit → pull request → merge → GitHub deploys to UAT.
+`pac solution sync` → build and test → commit → pull request into `develop` → when ready, merge `develop` into `master` → GitHub deploys to UAT.
 
 ---
 
@@ -419,10 +419,14 @@ If a step can't find a button, the selector to fix is in `e2e/demo/mda.ts`.
 2. Create an **app registration** in Entra ID and add it as an **application user** in UAT.
 3. Push the repo to GitHub. In **Settings → Environments** create `uat`. Add the four secrets
    and the variables.
-4. Open a pull request: **CI** runs all tests and packs the solution. Merge to `main`:
+4. Open a pull request: **CI** runs all tests and packs the solution. Merge `develop` into `master`:
    **Deploy UAT** runs CI again and then imports the **managed** zip into UAT.
 
-Every step is spelled out in [alm.md](alm.md). In UAT you can't edit CaseDesk's components,
+5. Set repository variable `UAT_DEPLOY_ENABLED` = `true` to switch the deploy job on. Until then
+   it is skipped.
+
+You work on `develop` and merge `develop` into `master` to release. The branch table and git
+commands are in [alm.md](alm.md#branches). Every step is spelled out in [alm.md](alm.md). In UAT you can't edit CaseDesk's components,
 which is the point of a managed solution: all changes come through Git.
 
 ---

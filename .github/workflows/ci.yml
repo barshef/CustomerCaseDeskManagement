@@ -4,28 +4,28 @@
 #
 # Triggers:
 #   - pull_request: every PR (build + test only, nothing is deployed).
-#   - push: every branch except main.
-#   - workflow_call: deploy-uat.yml calls this workflow on push to main, so main gets exactly one
+#   - push: every branch except master (develop and feature branches run here).
+#   - workflow_call: deploy-uat.yml calls this workflow on push to master, so master gets exactly one
 #     CI run and the deploy job can `needs:` it and read the artifact from the same run.
-#     (That is why main is excluded from `push` here: it would otherwise run CI twice.)
+#     (That is why master is excluded from `push` here: it would otherwise run CI twice.)
 name: CI
 
 on:
   pull_request:
   push:
-    branches-ignore: [main]
+    branches-ignore: [master]
   workflow_call:
   workflow_dispatch:
 
 permissions:
   contents: read
 
-# One CI run per ref; a newer push cancels the older run, except on main where a run may be
+# One CI run per ref; a newer push cancels the older run, except on master where a run may be
 # part of a deployment. When called from deploy-uat the group still differs from the caller's
 # ("deploy-uat"), which avoids the reusable-workflow concurrency deadlock.
 concurrency:
   group: ci-${{ github.event_name }}-${{ github.ref }}
-  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
 
 env:
   DOTNET_NOLOGO: true

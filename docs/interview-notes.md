@@ -140,7 +140,7 @@ config → declarative → low-code → pro-code. Pro-code needs a reason that l
 ## FR14: Tests and deploy on merge
 
 - **Used**: xUnit + FakeXrmEasy for plugins, xUnit for Functions and Jest for PCF. GitHub
-  Actions `ci.yml` runs all tests and then packs the solution. `deploy-uat.yml` on push to main
+  Actions `ci.yml` runs all tests and then packs the solution. `deploy-uat.yml` on push to master
   calls CI as a reusable workflow, then imports the **managed** zip to UAT with
   `microsoft/powerplatform-actions`, using a GitHub `uat` environment for approvals.
 - **Why**: ALM is an explicit PL-400 topic. Tests run before packing, so a red test blocks

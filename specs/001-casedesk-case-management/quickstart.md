@@ -62,5 +62,5 @@ non-Closed contexts, so both variants work with the same Azure code.
 | 6 | Click Escalate on a Medium case | Priority Critical, owner CaseDesk Supervisors, note "Escalated by…" |
 | 7 | Close a Resolved case | Stub logs `CaseClosedReceived` within 1 minute (`GET /api/external/caseclosed?caseNumber=…`) |
 | 8 | Sign in as `agent.b` (BU B); open a BU A case URL | Access denied; supervisor can open it |
-| 9 | Merge to `main` | `deploy-uat` workflow imports the managed solution to UAT after tests pass |
+| 9 | Merge `develop` into `master` | `deploy-uat` workflow imports the managed solution to UAT after tests pass |
 | 10 | `cd e2e; npm run login -- agentA` (and `agentB`, `supervisor`) once, then `npm run walk`; `npm run film` | Steps 1–8 pass in a visible browser; `e2e/demo-out/casedesk-demo.mp4` with one chapter per step ([docs/walkthrough-films.md](../../docs/walkthrough-films.md)) |

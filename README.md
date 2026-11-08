@@ -63,7 +63,7 @@ The solution build writes `solution/bin/Release/CaseDesk.zip` (unmanaged) and
   deploy the Azure side, register the two service endpoints, set environment variables, turn
   on flows, then run `pac solution sync`. Full steps are in
   [quickstart.md](specs/001-casedesk-case-management/quickstart.md) §2.
-- **UAT**: merge to `main`. **Deploy UAT** runs CI and then imports the managed solution. Set
+- **UAT**: merge `develop` into `master`. **Deploy UAT** runs CI and then imports the managed solution. Set
   up the secrets, variables and application user in [docs/alm.md](docs/alm.md).
 - **CaseClosed endpoints and the transport switch**:
   [docs/caseclosed-endpoints.md](docs/caseclosed-endpoints.md) and quickstart §3.

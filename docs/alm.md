@@ -15,15 +15,35 @@ Environment data that is not solution customisation is created per environment: 
 units, the `CaseDesk Supervisors` team and demo data (seeder), service endpoints (Plugin
 Registration Tool, see [caseclosed-endpoints.md](caseclosed-endpoints.md)), and connections.
 
+## Branches
+
+| Branch | Purpose | What runs on push |
+| --- | --- | --- |
+| `develop` | Day-to-day work. The default branch on GitHub; new work starts here | CI (tests + pack) |
+| `feature/<name>` (optional) | A bigger change, branched from `develop`, merged back by pull request | CI |
+| `master` | What is in UAT. Only updated by merging `develop` into it | Deploy UAT (CI, then the managed import) |
+
+```powershell
+git switch develop; git pull                 # start of a session
+git switch -c feature/my-change              # optional, for a bigger change
+# ... work, commit ...
+git push -u origin feature/my-change         # then open a pull request into develop
+# release: open a pull request from develop into master, merge it, and UAT is deployed
+```
+
+The deploy job is off until UAT is set up. Turn it on with the **repository** variable
+`UAT_DEPLOY_ENABLED` = `true` (*Settings → Secrets and variables → Actions → Variables*). Until
+then a push to `master` runs CI and shows the deploy job as *skipped*.
+
 ## Pipelines
 
 | Workflow | Trigger | Does |
 | --- | --- | --- |
-| `.github/workflows/ci.yml` (**CI**) | pull requests; pushes to any branch except `main`; called by Deploy UAT | Tests plugins (windows, net462), Functions (net8), PCF (Jest + build); then packs the solution and uploads artifact `solution` (both zips) |
-| `.github/workflows/deploy-uat.yml` (**Deploy UAT**) | push to `main`, manual | Runs CI as a reusable workflow; when green, job `deploy` (environment `uat`) fills the deployment settings, imports `CaseDesk_managed.zip` and publishes |
+| `.github/workflows/ci.yml` (**CI**) | pull requests; pushes to any branch except `master` (so `develop` and feature branches); called by Deploy UAT | Tests plugins (windows, net462), Functions (net8), PCF (Jest + build); then packs the solution and uploads artifact `solution` (both zips) |
+| `.github/workflows/deploy-uat.yml` (**Deploy UAT**) | push to `master` (deploy job runs only when repository variable `UAT_DEPLOY_ENABLED` = `true`), manual | Runs CI as a reusable workflow; when green, job `deploy` (environment `uat`) fills the deployment settings, imports `CaseDesk_managed.zip` and publishes |
 
 The comment at the top of `deploy-uat.yml` explains why it uses a reusable workflow and not
-`workflow_run`. Protect `main` with required status checks from the CI jobs on pull
+`workflow_run`. Protect `master` (and `develop`) with required status checks from the CI jobs on pull
 requests.
 
 ## GitHub secrets

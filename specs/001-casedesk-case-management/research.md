@@ -189,7 +189,7 @@ All Technical Context unknowns are resolved below. Format: Decision / Rationale 
 
 - **Decision**: GitHub Actions. `ci.yml` (pull requests and pushes): windows-latest, build and
   test plugins (net462), test Functions (net8), build and test PCF (Jest), build solution
-  project (validates XML + packs). `deploy-uat.yml` (push to `main`): after `ci` succeeds, pack
+  project (validates XML + packs). `deploy-uat.yml` (push to `master`): after `ci` succeeds, pack
   managed solution and import to UAT with `microsoft/powerplatform-actions` (`import-solution`,
   `publish-solution`), authenticating with an app registration stored in GitHub secrets
   `PP_APP_ID`, `PP_CLIENT_SECRET`, `PP_TENANT_ID`, `PP_UAT_URL`. Deployment settings file
