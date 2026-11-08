@@ -24,8 +24,7 @@
     <File Path="solution/src/Other/Solution.xml" />
     <File Path="solution/src/Other/Customizations.xml" />
   </Folder>
-  <Folder Name="/5 PCF SLA badge (open pcf/" />
-  <Folder Name="/5 PCF SLA badge (open pcf/SlaBadge in VS Code)/">
+  <Folder Name="/5 PCF SLA badge (edit in VS Code)/">
     <File Path="pcf/SlaBadge/SlaBadge.pcfproj" />
     <File Path="pcf/SlaBadge/SlaBadge/ControlManifest.Input.xml" />
   </Folder>

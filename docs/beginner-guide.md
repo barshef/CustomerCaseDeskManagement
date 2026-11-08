@@ -111,7 +111,7 @@ The repo is a set of folders because a Dynamics project mixes several kinds of c
    | 2 Azure Functions | `CaseDesk.Functions`, `CaseDesk.Functions.Tests`, Bicep | C# projects + files |
    | 3 Seeder | `CaseDesk.Seeder` | C# project |
    | 4 Dataverse solution | `CaseDesk.cdsproj`, `Solution.xml`, `Customizations.xml` | Files (build it from the terminal, below) |
-   | 5 PCF SLA badge | `SlaBadge.pcfproj`, the manifest | Files (TypeScript is easier in VS Code) |
+   | 5 PCF SLA badge (edit in VS Code) | `SlaBadge.pcfproj`, the manifest | Files (TypeScript is easier in VS Code) |
    | 6 Pipelines | GitHub Actions YAML | Files |
    | 7 Docs | All docs | Files |
 
@@ -440,6 +440,7 @@ which is the point of a managed solution: all changes come through Git.
 | No customer email | Flow **Run history**; then the Email record's status on the timeline | Flow off, connection missing, mailbox not enabled, no queue for `cd_SenderQueueEmail` |
 | Closed case never reaches the stub | **Settings → System Jobs** (async plugin failures); Service Bus dead-letter queue; Application Insights | Endpoint name doesn't match the env var; wrong key; Function not published |
 | Escalate button missing | Publish all customisations; hard-refresh the browser | Ribbon cached |
+| A `.ts` file opens in Media Player and won't play | It isn't a video | `.ts` here means TypeScript code; Windows also uses `.ts` for a video format. Open it in VS Code or Visual Studio (right-click → **Open with**). The films are `.mp4` files in `e2e/demo-out/`, made by `npm run film` (Part 11) |
 | Agent B *can* see BU A cases | The user's BU and roles; did you also give them System Administrator? | System Administrator overrides everything |
 
 Asking for help: copy the exact error text (and the correlation id, if the dialog shows one)
