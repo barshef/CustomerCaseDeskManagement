@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<optionset Name="cd_casecategory" localizedName="Case Category" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <OptionSetType>picklist</OptionSetType>
+  <IsGlobal>1</IsGlobal>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <displaynames>
+    <displayname description="Case Category" languagecode="1033" />
+  </displaynames>
+  <Descriptions>
+    <Description description="Category of a CaseDesk case." languagecode="1033" />
+  </Descriptions>
+  <options>
+    <option value="417200000" IsHidden="0">
+      <labels>
+        <label description="Billing" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="417200001" IsHidden="0">
+      <labels>
+        <label description="Delivery" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="417200002" IsHidden="0">
+      <labels>
+        <label description="Product" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="417200003" IsHidden="0">
+      <labels>
+        <label description="Refund" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="417200004" IsHidden="0">
+      <labels>
+        <label description="Other" languagecode="1033" />
+      </labels>
+    </option>
+  </options>
+</optionset>

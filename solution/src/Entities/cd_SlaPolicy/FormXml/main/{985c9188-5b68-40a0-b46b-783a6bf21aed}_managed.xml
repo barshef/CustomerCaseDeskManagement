@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{985c9188-5b68-40a0-b46b-783a6bf21aed}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab name="general" id="{b7d063ad-afc2-5703-8762-cba39704c541}" expanded="true" showlabel="true" verticallayout="true">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+          <column width="100%">
+            <sections>
+                <section name="policy" showlabel="true" showbar="false" columns="1" id="{471e09d4-6f38-529b-9fec-4cb86bfa8bb0}">
+                  <labels>
+                    <label description="SLA Policy" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{1fcdf40c-61a8-5721-9f9b-40125381ba17}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Name" languagecode="1033" />
+                        </labels>
+                        <control id="cd_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cd_name" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{94d39b40-3039-5c6f-9f0a-28c0c0368da7}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Priority" languagecode="1033" />
+                        </labels>
+                        <control id="cd_priority" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="cd_priority" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{8061942b-7d79-53af-99f4-f667229b0069}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Resolution Hours" languagecode="1033" />
+                        </labels>
+                        <control id="cd_resolutionhours" classid="{C6D124CA-7EDA-4a60-AEA9-7FB8D318B68F}" datafieldname="cd_resolutionhours" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5e38f7af-929a-5f7b-bf97-2676fa46654e}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Warning Hours" languagecode="1033" />
+                        </labels>
+                        <control id="cd_warninghours" classid="{C6D124CA-7EDA-4a60-AEA9-7FB8D318B68F}" datafieldname="cd_warninghours" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+            </sections>
+          </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="SLA Policy" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="SLA Policy main form" languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

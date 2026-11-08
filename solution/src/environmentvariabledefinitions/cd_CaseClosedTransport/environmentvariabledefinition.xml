@@ -1,0 +1,14 @@
+<environmentvariabledefinition schemaname="cd_CaseClosedTransport">
+  <defaultvalue>ServiceBus</defaultvalue>
+  <description default="How CaseClosed is published: ServiceBus (default), Webhook or None.">
+    <label description="How CaseClosed is published: ServiceBus (default), Webhook or None." languagecode="1033" />
+  </description>
+  <displayname default="CaseClosed Transport">
+    <label description="CaseClosed Transport" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.0</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000000</type>
+</environmentvariabledefinition>

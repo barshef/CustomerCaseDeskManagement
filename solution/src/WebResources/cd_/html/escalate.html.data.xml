@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{7857931f-20dd-436a-a68a-7de3d04ba0fc}</WebResourceId>
+  <Name>cd_/html/escalate.html</Name>
+  <DisplayName>CaseDesk escalate dialog</DisplayName>
+  <Description>Dialog that asks for the escalation reason.</Description>
+  <WebResourceType>1</WebResourceType>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/cd_htmlescalatehtml7857931F-20DD-436A-A68A-7DE3D04BA0FC</FileName>
+</WebResource>

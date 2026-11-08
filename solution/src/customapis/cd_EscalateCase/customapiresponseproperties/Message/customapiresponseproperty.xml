@@ -1,0 +1,11 @@
+<customapiresponseproperty uniquename="Message">
+  <description default="Human-readable result shown in the form notification.">
+    <label description="Human-readable result shown in the form notification." languagecode="1033" />
+  </description>
+  <displayname default="Message">
+    <label description="Message" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <name>cd_EscalateCase.Message</name>
+  <type>10</type>
+</customapiresponseproperty>

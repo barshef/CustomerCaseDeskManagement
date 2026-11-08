@@ -1,0 +1,226 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cd_sharedcommondataserviceforapps"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_office365": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cd_sharedoffice365"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Daily_at_0700_UTC": {
+          "recurrence": {
+            "frequency": "Day",
+            "interval": 1,
+            "timeZone": "UTC",
+            "schedule": {
+              "hours": [
+                "7"
+              ],
+              "minutes": [
+                0
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "8ce6fdea-8891-53a7-a167-f9b87b702cc5"
+          },
+          "type": "Recurrence"
+        }
+      },
+      "actions": {
+        "Compose_week_start": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "13aa32c6-16a5-51a7-91e2-65587769c2c4"
+          },
+          "type": "Compose",
+          "inputs": "@{startOfDay(addDays(utcNow(), mul(-1, mod(add(dayOfWeek(utcNow()), 6), 7))))}"
+        },
+        "List_cases_due_this_week": {
+          "runAfter": {
+            "Compose_week_start": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "bacdd1d0-713b-5d64-bbdf-553f10a5ac8b"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cd_cases",
+              "$select": "cd_caseid,cd_casenumber,cd_name,cd_priority,cd_duedate,cd_resolvedon,statecode,statuscode,_ownerid_value",
+              "$filter": "cd_duedate ge @{outputs('Compose_week_start')} and cd_duedate lt @{utcNow()} and statuscode ne 417200006",
+              "$orderby": "cd_duedate asc"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Filter_breached_cases": {
+          "runAfter": {
+            "List_cases_due_this_week": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f9283f36-7847-50e3-9c41-dc9090df7220"
+          },
+          "type": "Query",
+          "inputs": {
+            "from": "@outputs('List_cases_due_this_week')?['body/value']",
+            "where": "@or(and(equals(item()?['statecode'], 0), not(equals(item()?['statuscode'], 417200005)), empty(item()?['cd_resolvedon'])), greater(ticks(coalesce(item()?['cd_resolvedon'], '1900-01-01T00:00:00Z')), ticks(item()?['cd_duedate'])))"
+          }
+        },
+        "Condition_-_Any_breaches": {
+          "actions": {
+            "Select_digest_rows": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "1645516b-7d88-5e84-92b0-574fd2171faf"
+              },
+              "type": "Select",
+              "inputs": {
+                "from": "@body('Filter_breached_cases')",
+                "select": {
+                  "Case": "@item()?['cd_casenumber']",
+                  "Title": "@item()?['cd_name']",
+                  "Priority": "@item()?['cd_priority@OData.Community.Display.V1.FormattedValue']",
+                  "Owner": "@item()?['_ownerid_value@OData.Community.Display.V1.FormattedValue']",
+                  "Due (UTC)": "@formatDateTime(item()?['cd_duedate'], 'yyyy-MM-dd HH:mm')",
+                  "Resolved (UTC)": "@if(empty(item()?['cd_resolvedon']), '', formatDateTime(item()?['cd_resolvedon'], 'yyyy-MM-dd HH:mm'))",
+                  "Status": "@item()?['statuscode@OData.Community.Display.V1.FormattedValue']"
+                }
+              }
+            },
+            "Create_HTML_table": {
+              "runAfter": {
+                "Select_digest_rows": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "98585469-949e-5b5a-a9b9-f028c1726e88"
+              },
+              "type": "Table",
+              "inputs": {
+                "from": "@body('Select_digest_rows')",
+                "format": "HTML"
+              }
+            },
+            "List_supervisors": {
+              "runAfter": {
+                "Create_HTML_table": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "ca45f01e-9b6f-527b-a43b-69ca49860850"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "systemusers",
+                  "fetchXml": "<fetch distinct=\"true\"><entity name=\"systemuser\"><attribute name=\"systemuserid\" /><attribute name=\"fullname\" /><attribute name=\"internalemailaddress\" /><filter type=\"and\"><condition attribute=\"isdisabled\" operator=\"eq\" value=\"0\" /><condition attribute=\"internalemailaddress\" operator=\"not-null\" /><filter type=\"or\"><condition entityname=\"directrole\" attribute=\"name\" operator=\"eq\" value=\"CaseDesk Supervisor\" /><condition entityname=\"teamrole\" attribute=\"name\" operator=\"eq\" value=\"CaseDesk Supervisor\" /></filter></filter><link-entity name=\"systemuserroles\" from=\"systemuserid\" to=\"systemuserid\" link-type=\"outer\" alias=\"sur\"><link-entity name=\"role\" from=\"roleid\" to=\"roleid\" link-type=\"outer\" alias=\"directrole\" /></link-entity><link-entity name=\"teammembership\" from=\"systemuserid\" to=\"systemuserid\" link-type=\"outer\" alias=\"tm\"><link-entity name=\"teamroles\" from=\"teamid\" to=\"teamid\" link-type=\"outer\" alias=\"tr\"><link-entity name=\"role\" from=\"roleid\" to=\"roleid\" link-type=\"outer\" alias=\"teamrole\" /></link-entity></link-entity></entity></fetch>"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Apply_to_each_supervisor": {
+              "foreach": "@outputs('List_supervisors')?['body/value']",
+              "actions": {
+                "Send_digest_email": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "744ce9de-2990-555f-985c-3500c75ec4ba"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_office365",
+                      "operationId": "SendEmailV2",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+                    },
+                    "parameters": {
+                      "emailMessage/To": "@{items('Apply_to_each_supervisor')?['internalemailaddress']}",
+                      "emailMessage/Subject": "CaseDesk: @{length(body('Filter_breached_cases'))} SLA breach(es) this week",
+                      "emailMessage/Body": "<p>Hello @{items('Apply_to_each_supervisor')?['fullname']},</p><p>These cases breached their SLA this week (week starting @{formatDateTime(outputs('Compose_week_start'), 'dd MMM yyyy')}):</p>@{body('Create_HTML_table')}<p>CaseDesk</p>",
+                      "emailMessage/Importance": "Normal"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "List_supervisors": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "7e4a57b9-cb8b-5e08-9ba7-a26ba9667928"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Filter_breached_cases": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "and": [
+              {
+                "greater": [
+                  "@length(body('Filter_breached_cases'))",
+                  0
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "69324407-2a2e-54d8-a868-5cb0d03b270f"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

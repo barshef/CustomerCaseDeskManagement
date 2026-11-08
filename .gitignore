@@ -9,7 +9,7 @@ obj/
 *.suo
 .vs/
 TestResults/
-*.snk
+# *.snk is committed on purpose: plugin signing identity, not a secret (research R2)
 
 # Node / PCF
 node_modules/

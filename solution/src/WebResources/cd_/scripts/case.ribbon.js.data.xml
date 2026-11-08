@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{11983757-6455-4c4c-9b93-ab0a73a30619}</WebResourceId>
+  <Name>cd_/scripts/case.ribbon.js</Name>
+  <DisplayName>CaseDesk case ribbon commands</DisplayName>
+  <Description>Escalate command on the Case form (calls Custom API cd_EscalateCase).</Description>
+  <WebResourceType>3</WebResourceType>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/cd_scriptscaseribbonjs11983757-6455-4C4C-9B93-AB0A73A30619</FileName>
+</WebResource>

@@ -1,0 +1,44 @@
+<Solution>
+  <Folder Name="/0 Start here/">
+    <File Path="README.md" />
+    <File Path="docs/beginner-guide.md" />
+    <File Path="BRD — CaseDesk Customer Case Management on Dynamics 365 CE.md" />
+    <File Path="specs/001-casedesk-case-management/quickstart.md" />
+  </Folder>
+  <Folder Name="/1 Plugins (server-side C# rules)/">
+    <Project Path="plugins/CaseDesk.Plugins/CaseDesk.Plugins.csproj" />
+    <Project Path="tests/CaseDesk.Plugins.Tests/CaseDesk.Plugins.Tests.csproj" />
+  </Folder>
+  <Folder Name="/2 Azure Functions (CaseClosed integration)/">
+    <Project Path="functions/CaseDesk.Functions/CaseDesk.Functions.csproj" />
+    <Project Path="tests/CaseDesk.Functions.Tests/CaseDesk.Functions.Tests.csproj" />
+    <File Path="functions/infra/main.bicep" />
+    <File Path="functions/infra/README.md" />
+  </Folder>
+  <Folder Name="/3 Seeder (demo data)/">
+    <Project Path="tools/CaseDesk.Seeder/CaseDesk.Seeder.csproj" />
+  </Folder>
+  <Folder Name="/4 Dataverse solution (build from command line)/">
+    <File Path="solution/CaseDesk.cdsproj" />
+    <File Path="solution/deploymentSettings.uat.json" />
+    <File Path="solution/src/Other/Solution.xml" />
+    <File Path="solution/src/Other/Customizations.xml" />
+  </Folder>
+  <Folder Name="/5 PCF SLA badge (open pcf/SlaBadge in VS Code)/">
+    <File Path="pcf/SlaBadge/SlaBadge.pcfproj" />
+    <File Path="pcf/SlaBadge/SlaBadge/ControlManifest.Input.xml" />
+  </Folder>
+  <Folder Name="/6 Pipelines/">
+    <File Path=".github/workflows/ci.yml" />
+    <File Path=".github/workflows/deploy-uat.yml" />
+  </Folder>
+  <Folder Name="/7 Docs/">
+    <File Path="docs/architecture.md" />
+    <File Path="docs/interview-notes.md" />
+    <File Path="docs/alm.md" />
+    <File Path="docs/caseclosed-endpoints.md" />
+    <File Path="docs/business-rules.md" />
+    <File Path="docs/walkthrough-films.md" />
+    <File Path="docs/toolchain.md" />
+  </Folder>
+</Solution>

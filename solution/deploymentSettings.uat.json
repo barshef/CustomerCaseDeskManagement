@@ -1,0 +1,45 @@
+{
+  "EnvironmentVariables": [
+    {
+      "SchemaName": "cd_CaseClosedTransport",
+      "Value": "ServiceBus"
+    },
+    {
+      "SchemaName": "cd_CaseClosedServiceBusEndpointName",
+      "Value": "CaseDesk CaseClosed ServiceBus"
+    },
+    {
+      "SchemaName": "cd_CaseClosedWebhookEndpointName",
+      "Value": "CaseDesk CaseClosed Webhook"
+    },
+    {
+      "SchemaName": "cd_SupervisorTeamName",
+      "Value": "CaseDesk Supervisors"
+    },
+    {
+      "SchemaName": "cd_SenderQueueEmail",
+      "Value": ""
+    },
+    {
+      "SchemaName": "cd_AutoCloseDays",
+      "Value": "5"
+    }
+  ],
+  "ConnectionReferences": [
+    {
+      "LogicalName": "cd_sharedcommondataserviceforapps",
+      "ConnectionId": "",
+      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+    },
+    {
+      "LogicalName": "cd_sharedoffice365",
+      "ConnectionId": "",
+      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+    },
+    {
+      "LogicalName": "cd_sharedapprovals",
+      "ConnectionId": "",
+      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_approvals"
+    }
+  ]
+}

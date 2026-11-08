@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../tests/CaseDesk.Plugins.Tests/CaseDesk.Plugins.Tests.csproj" />
+  <Project Path="CaseDesk.Plugins/CaseDesk.Plugins.csproj" />
+</Solution>

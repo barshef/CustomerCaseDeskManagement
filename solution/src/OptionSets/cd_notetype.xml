@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<optionset Name="cd_notetype" localizedName="Note Type" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <OptionSetType>picklist</OptionSetType>
+  <IsGlobal>1</IsGlobal>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <displaynames>
+    <displayname description="Note Type" languagecode="1033" />
+  </displaynames>
+  <Descriptions>
+    <Description description="Whether a case note is internal or customer-facing." languagecode="1033" />
+  </Descriptions>
+  <options>
+    <option value="417200000" IsHidden="0">
+      <labels>
+        <label description="Internal" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="417200001" IsHidden="0">
+      <labels>
+        <label description="Customer-facing" languagecode="1033" />
+      </labels>
+    </option>
+  </options>
+</optionset>

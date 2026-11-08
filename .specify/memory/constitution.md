@@ -1,50 +1,109 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report
+- Version change: (template) → 1.0.0
+- Principles defined: I. Simplest Extension Point Wins; II. Server-Side Rules Are Authoritative;
+  III. Fast, Idempotent, Traceable Plugins; IV. Test-First for Code Components;
+  V. Secrets Never in Source; VI. One Solution, Managed Downstream
+- Added sections: Platform & Technology Constraints; Development Workflow & Quality Gates; Governance
+- Removed sections: none
+- Templates requiring updates: none (plan/spec/tasks templates read this file at runtime)
+- Deferred TODOs: none
+-->
+
+# CaseDesk Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Simplest Extension Point Wins
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+Every requirement MUST be implemented with the simplest Power Platform extension point that
+satisfies it, in this order of preference: platform configuration (columns, auto-number,
+security roles, views, dashboards) → declarative logic (business rules) → low-code
+(Power Automate) → pro-code (C# plugins, Custom APIs, PCF, Azure Functions).
+Pro-code MUST be justified by a need low-code cannot meet (same-transaction guarantee,
+server-side enforcement for all callers, custom rendering, reusable callable operation,
+decoupled async integration). Each extension point type is used for a real reason, never only
+for demonstration.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+*Rationale*: CaseDesk exists to show judgement about Power Platform; the "why" for each
+choice is part of the deliverable.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### II. Server-Side Rules Are Authoritative
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+Any business rule that must hold for the Web API, flows and the UI alike (due date
+calculation, close/resolve guards, escalation) MUST be enforced on the server (plugin or Custom
+API). Client script and form configuration MAY add convenience but MUST NOT be the only
+enforcement of a rule. Violations MUST surface as `InvalidPluginExecutionException` with a
+message an agent can act on.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+*Rationale*: Data integrity cannot depend on which client wrote the record.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### III. Fast, Idempotent, Traceable Plugins
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+Synchronous plugins MUST complete in under 2 seconds and MUST NOT call external HTTP
+endpoints. Anything slow or external MUST go asynchronous (Service Bus / webhook → Azure
+Function). Every plugin and Custom API MUST be idempotent on retry and MUST log through
+`ITracingService`. Azure Functions MUST log to Application Insights.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+*Rationale*: Sync plugins run inside the user's transaction; slowness and side effects there
+are user-visible failures.
+
+### IV. Test-First for Code Components (NON-NEGOTIABLE)
+
+All plugin and Custom API logic MUST have xUnit + FakeXrmEasy unit tests written before or
+alongside the implementation, covering the happy path and each rule violation. PCF logic that
+computes state (e.g. SLA colour) MUST be unit tested. CI MUST run tests before packing or
+deploying; a failing test blocks deployment.
+
+*Rationale*: ALM and testability are explicit PL-400 and interview topics and the main risk
+reducer for server logic.
+
+### V. Secrets Never in Source
+
+Client secrets, endpoint keys and connection strings MUST live in Dataverse environment
+variables (secret type backed by Key Vault where possible) or Azure Key Vault / GitHub
+encrypted secrets. They MUST NOT appear in code, solution XML, flow definitions, test
+fixtures or commit history. The repository is public.
+
+*Rationale*: A public repo turns any committed secret into an incident.
+
+### VI. One Solution, Managed Downstream
+
+All customisation MUST live in a single solution with publisher prefix `cd_`. The source of
+truth is the unpacked solution under `/solution`. Downstream environments (UAT, AppSource)
+MUST receive the managed solution only, deployed by pipeline; no manual customisation in UAT.
+
+*Rationale*: Reproducible deployments and clean ALM history.
+
+## Platform & Technology Constraints
+
+- Runs on Dataverse with a custom `cd_case` table; MUST NOT depend on Dynamics 365 Customer
+  Service licensing (free developer plan + Power Apps per-user licence).
+- Plugins: C# targeting .NET Framework 4.6.2, Microsoft.CrmSdk.CoreAssemblies, signed assembly.
+- Tests: xUnit + FakeXrmEasy.
+- PCF: TypeScript (React allowed), built with the `pac` CLI tooling.
+- Integration: Azure Functions (.NET 8 isolated), Service Bus or webhook endpoint, Application
+  Insights, Key Vault. Demo data seeding via .NET 8 console app on the Dataverse Web API.
+- Scale target: 50 concurrent agents, 10,000 open cases using Dataverse defaults (no custom
+  indexing).
+- Repo layout: `/solution`, `/plugins`, `/pcf`, `/functions`, `/tests`, `/docs`, plus
+  `/tools` for the seeding console app.
+
+## Development Workflow & Quality Gates
+
+- Work proceeds through the Spec Kit flow: specify → clarify → plan → tasks → implement.
+- Every plan MUST include a Constitution Check against Principles I–VI.
+- GitHub Actions on push to `main`: build and test plugins → pack solution (managed) → import
+  to UAT. Pull requests run build and tests only.
+- A requirement is done when its acceptance step from the demo script passes in Dev, and the
+  change is in the unpacked solution in source control.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution supersedes other practices for CaseDesk. Amendments require a written change
+to this file with a Sync Impact Report, a version bump, and a review of open plans for impact.
+Versioning: MAJOR for removed or redefined principles, MINOR for new principles or sections,
+PATCH for wording. Every plan and code review MUST check compliance; any deviation MUST be
+recorded in the plan's Complexity Tracking table with its justification.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-11-08 | **Last Amended**: 2026-11-08

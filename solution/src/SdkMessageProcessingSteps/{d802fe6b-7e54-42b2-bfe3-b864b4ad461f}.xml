@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SdkMessageProcessingStep Name="CaseDesk.Plugins.CasePreCreatePlugin: Create of cd_case (PreOperation)" SdkMessageProcessingStepId="{d802fe6b-7e54-42b2-bfe3-b864b4ad461f}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+  <PluginTypeName>CaseDesk.Plugins.CasePreCreatePlugin, CaseDesk.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4084e1bede633e50</PluginTypeName>
+  <PluginTypeId>5d08fcdf-8e39-4fb0-955e-d77d11350589</PluginTypeId>
+  <PrimaryEntity>cd_case</PrimaryEntity>
+  <AsyncAutoDelete>0</AsyncAutoDelete>
+  <Description>S1: validate title/customer and set SLA policy, due date and warning on (FR-001..003).</Description>
+  <FilteringAttributes></FilteringAttributes>
+  <ImpersonatingUserIdName></ImpersonatingUserIdName>
+  <InvocationSource>1</InvocationSource>
+  <Mode>0</Mode>
+  <Rank>1</Rank>
+  <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+  <Stage>20</Stage>
+  <IsCustomizable>1</IsCustomizable>
+  <IsHidden>0</IsHidden>
+  <SupportedDeployment>0</SupportedDeployment>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <SdkMessageProcessingStepImages />
+</SdkMessageProcessingStep>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <!-- CaseDesk SLA countdown badge (FR-008 / research R8). Bound to cd_duedate on the Case form. -->
+  <control namespace="CaseDesk" constructor="SlaBadge" version="1.0.0" display-name-key="SlaBadge_Display_Key" description-key="SlaBadge_Desc_Key" control-type="virtual" >
+    <external-service-usage enabled="false">
+    </external-service-usage>
+    <!-- The field the control is placed on (cd_duedate). -->
+    <property name="dueDate" display-name-key="DueDate_Display_Key" description-key="DueDate_Desc_Key" of-type="DateAndTime.DateAndTime" usage="bound" required="true" />
+    <!-- cd_warningon: start of the amber warning window. -->
+    <property name="warningOn" display-name-key="WarningOn_Display_Key" description-key="WarningOn_Desc_Key" of-type="DateAndTime.DateAndTime" usage="bound" required="false" />
+    <!-- cd_resolvedon: when set, the SLA is final (met / breached). -->
+    <property name="resolvedOn" display-name-key="ResolvedOn_Display_Key" description-key="ResolvedOn_Desc_Key" of-type="DateAndTime.DateAndTime" usage="bound" required="false" />
+    <!-- cd_closedon: closed/cancelled without resolution; stops the clock. -->
+    <property name="closedOn" display-name-key="ClosedOn_Display_Key" description-key="ClosedOn_Desc_Key" of-type="DateAndTime.DateAndTime" usage="bound" required="false" />
+    <resources>
+      <code path="index.ts" order="1"/>
+      <platform-library name="React" version="16.14.0" />
+      <platform-library name="Fluent" version="9.68.0" />
+      <resx path="strings/SlaBadge.1033.resx" version="1.0.0" />
+    </resources>
+  </control>
+</manifest>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SlaBadge_Display_Key" xml:space="preserve">
+    <value>SLA Badge</value>
+  </data>
+  <data name="SlaBadge_Desc_Key" xml:space="preserve">
+    <value>Live SLA countdown badge (green / amber / red, then met / breached) for a CaseDesk case.</value>
+  </data>
+  <data name="DueDate_Display_Key" xml:space="preserve">
+    <value>Due date</value>
+  </data>
+  <data name="DueDate_Desc_Key" xml:space="preserve">
+    <value>The SLA due date of the case (cd_duedate).</value>
+  </data>
+  <data name="WarningOn_Display_Key" xml:space="preserve">
+    <value>Warning on</value>
+  </data>
+  <data name="WarningOn_Desc_Key" xml:space="preserve">
+    <value>Start of the SLA warning window (cd_warningon).</value>
+  </data>
+  <data name="ResolvedOn_Display_Key" xml:space="preserve">
+    <value>Resolved on</value>
+  </data>
+  <data name="ResolvedOn_Desc_Key" xml:space="preserve">
+    <value>When the case was resolved (cd_resolvedon).</value>
+  </data>
+  <data name="ClosedOn_Display_Key" xml:space="preserve">
+    <value>Closed on</value>
+  </data>
+  <data name="ClosedOn_Desc_Key" xml:space="preserve">
+    <value>When the case was closed or cancelled (cd_closedon).</value>
+  </data>
+</root>

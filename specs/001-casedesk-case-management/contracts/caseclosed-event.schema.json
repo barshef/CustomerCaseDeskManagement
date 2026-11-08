@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://casedesk.example/schemas/caseclosed/v1",
+  "title": "CaseClosed v1",
+  "description": "Message POSTed by the CaseDesk Azure Function to the external system when a case is Closed. Produced from the Dataverse RemoteExecutionContext (post-image) regardless of transport (Service Bus or webhook).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "messageId", "eventType", "schemaVersion", "occurredAt", "transport",
+    "case"
+  ],
+  "properties": {
+    "messageId": {
+      "type": "string",
+      "description": "Stable idempotency key: '{caseId}:{closedOn ISO-8601}'. Receivers MUST ignore repeats.",
+      "examples": ["3f1c...e9:2026-11-20T10:15:00.0000000Z"]
+    },
+    "eventType": { "const": "CaseClosed" },
+    "schemaVersion": { "const": "1.0" },
+    "occurredAt": { "type": "string", "format": "date-time", "description": "cd_closedon (UTC)" },
+    "transport": { "enum": ["ServiceBus", "Webhook"] },
+    "correlationId": { "type": "string", "description": "Dataverse execution context CorrelationId" },
+    "organization": { "type": "string", "description": "Dataverse organization name" },
+    "case": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "caseNumber", "title", "category", "priority", "createdOn", "closedOn", "slaMet"],
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "caseNumber": { "type": "string", "pattern": "^CD-\\d{5,}$" },
+        "title": { "type": "string" },
+        "category": { "enum": ["Billing", "Delivery", "Product", "Refund", "Other"] },
+        "priority": { "enum": ["Low", "Medium", "High", "Critical"] },
+        "customer": {
+          "type": ["object", "null"],
+          "properties": {
+            "accountId": { "type": "string", "format": "uuid" },
+            "name": { "type": ["string", "null"] }
+          }
+        },
+        "requesterContactId": { "type": ["string", "null"], "format": "uuid" },
+        "createdOn": { "type": "string", "format": "date-time" },
+        "dueDate": { "type": ["string", "null"], "format": "date-time" },
+        "resolvedOn": { "type": ["string", "null"], "format": "date-time" },
+        "closedOn": { "type": "string", "format": "date-time" },
+        "slaMet": { "type": "boolean", "description": "true if resolvedOn (or closedOn when not resolved) <= dueDate" },
+        "refundAmount": { "type": ["number", "null"] }
+      }
+    }
+  }
+}

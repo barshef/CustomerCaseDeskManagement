@@ -1,0 +1,129 @@
+# CaseDesk deploy to UAT (FR14, research R16, constitution VI).
+#
+# Trigger choice: push to main + reusable CI (`uses: ./.github/workflows/ci.yml`), not
+# `workflow_run`. Why:
+#   - The deploy job `needs: ci`, so a failing test visibly blocks deployment in the same run.
+#   - The artifact comes from the same run, so no run-id / github-token cross-run download.
+#   - workflow_run always runs the workflow file from the default branch and also fires for CI
+#     runs started by PRs (including fork PRs from a branch called "main"), so it needs extra
+#     `event == 'push'` guards. Its one advantage, a single shared CI run, we keep by excluding
+#     main from ci.yml's own `push` trigger.
+#   (workflow_run alternative: `on: workflow_run: { workflows: [CI], types: [completed],
+#    branches: [main] }`, guard `github.event.workflow_run.conclusion == 'success' &&
+#    github.event.workflow_run.event == 'push'`, then actions/download-artifact with
+#    `run-id: ${{ github.event.workflow_run.id }}` and `github-token: ${{ github.token }}`
+#    plus `actions: read` permission.)
+#
+# UAT receives the managed solution only, and only from this pipeline.
+name: Deploy UAT
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Deployments queue rather than cancel: never abort a solution import halfway.
+concurrency:
+  group: deploy-uat
+  cancel-in-progress: false
+
+jobs:
+  ci:
+    name: CI
+    uses: ./.github/workflows/ci.yml
+
+  deploy:
+    name: Import managed solution to UAT
+    needs: ci
+    runs-on: windows-latest
+    # Add required reviewers / wait timers to the "uat" environment in repo settings.
+    # Secrets PP_* can be environment-scoped secrets on "uat".
+    environment: uat
+    steps:
+      - name: Checkout (for the deployment settings file)
+        uses: actions/checkout@v4
+
+      - name: Download solution artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: solution
+          path: out/solution
+
+      # Fill environment variable values and connection references from GitHub *variables*
+      # (non-secret, per environment). Values left empty keep what the file has. Real secrets
+      # never go into this file (constitution V).
+      - name: Prepare deployment settings
+        shell: pwsh
+        env:
+          SETTINGS_PATH: solution/deploymentSettings.uat.json
+          CD_SENDER_QUEUE_EMAIL: ${{ vars.CD_SENDER_QUEUE_EMAIL }}
+          CD_CASECLOSED_TRANSPORT: ${{ vars.CD_CASECLOSED_TRANSPORT }}
+          CD_SUPERVISOR_TEAM_NAME: ${{ vars.CD_SUPERVISOR_TEAM_NAME }}
+          CD_AUTO_CLOSE_DAYS: ${{ vars.CD_AUTO_CLOSE_DAYS }}
+          CD_DATAVERSE_CONNECTION_ID: ${{ vars.CD_DATAVERSE_CONNECTION_ID }}
+        run: |
+          $path = $env:SETTINGS_PATH
+          if (-not (Test-Path $path)) { throw "Deployment settings file '$path' not found." }
+          $settings = Get-Content $path -Raw | ConvertFrom-Json
+
+          $envVarValues = @{
+            'cd_SenderQueueEmail'    = $env:CD_SENDER_QUEUE_EMAIL
+            'cd_CaseClosedTransport' = $env:CD_CASECLOSED_TRANSPORT
+            'cd_SupervisorTeamName'  = $env:CD_SUPERVISOR_TEAM_NAME
+            'cd_AutoCloseDays'       = $env:CD_AUTO_CLOSE_DAYS
+          }
+          foreach ($ev in @($settings.EnvironmentVariables)) {
+            if ($null -eq $ev -or -not $ev.SchemaName) { continue }
+            $value = $envVarValues[$ev.SchemaName]
+            if (-not [string]::IsNullOrWhiteSpace($value)) {
+              $ev.Value = $value
+              Write-Host "Environment variable $($ev.SchemaName) set from GitHub vars."
+            } elseif ([string]::IsNullOrWhiteSpace($ev.Value)) {
+              Write-Host "::warning::Environment variable $($ev.SchemaName) has no value for UAT."
+            }
+          }
+
+          $connectionIds = @{
+            'cd_sharedcommondataserviceforapps' = $env:CD_DATAVERSE_CONNECTION_ID
+          }
+          foreach ($cr in @($settings.ConnectionReferences)) {
+            if ($null -eq $cr -or -not $cr.LogicalName) { continue }
+            $id = $connectionIds[$cr.LogicalName]
+            if (-not [string]::IsNullOrWhiteSpace($id)) {
+              $cr.ConnectionId = $id
+              Write-Host "Connection reference $($cr.LogicalName) set from GitHub vars."
+            } elseif ([string]::IsNullOrWhiteSpace($cr.ConnectionId)) {
+              Write-Host "::warning::Connection reference $($cr.LogicalName) has no connection in UAT; its flows will import turned off."
+            }
+          }
+
+          $settings | ConvertTo-Json -Depth 10 | Set-Content $path -Encoding utf8
+
+      - name: Install Power Platform CLI
+        uses: microsoft/powerplatform-actions/actions-install@v1
+
+      - name: Import managed solution
+        uses: microsoft/powerplatform-actions/import-solution@v1
+        with:
+          environment-url: ${{ secrets.PP_UAT_URL }}
+          app-id: ${{ secrets.PP_APP_ID }}
+          client-secret: ${{ secrets.PP_CLIENT_SECRET }}
+          tenant-id: ${{ secrets.PP_TENANT_ID }}
+          solution-file: out/solution/CaseDesk_managed.zip
+          use-deployment-settings-file: true
+          deployment-settings-file: solution/deploymentSettings.uat.json
+          force-overwrite: true
+          publish-changes: true
+          run-asynchronously: true
+          max-async-wait-time: 60
+
+      - name: Publish customizations
+        uses: microsoft/powerplatform-actions/publish-solution@v1
+        with:
+          environment-url: ${{ secrets.PP_UAT_URL }}
+          app-id: ${{ secrets.PP_APP_ID }}
+          client-secret: ${{ secrets.PP_CLIENT_SECRET }}
+          tenant-id: ${{ secrets.PP_TENANT_ID }}

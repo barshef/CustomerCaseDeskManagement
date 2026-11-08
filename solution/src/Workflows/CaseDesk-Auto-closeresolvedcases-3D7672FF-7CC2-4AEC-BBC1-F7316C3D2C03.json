@@ -1,0 +1,257 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cd_sharedcommondataserviceforapps"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "CaseDesk Auto Close Days (cd_AutoCloseDays)": {
+          "defaultValue": 5,
+          "type": "Int",
+          "metadata": {
+            "schemaName": "cd_AutoCloseDays"
+          }
+        }
+      },
+      "triggers": {
+        "Daily_at_0200_UTC": {
+          "recurrence": {
+            "frequency": "Day",
+            "interval": 1,
+            "timeZone": "UTC",
+            "schedule": {
+              "hours": [
+                "2"
+              ],
+              "minutes": [
+                0
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "9cb96284-dd65-5c7a-85d4-b42c31c81f5c"
+          },
+          "type": "Recurrence"
+        }
+      },
+      "actions": {
+        "List_resolved_cases_past_threshold": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "22d3d85b-d3f6-5d2a-83ae-3ea8224445df"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cd_cases",
+              "$select": "cd_caseid,cd_casenumber,cd_name,cd_resolvedon,cd_customerreplypending,_owninguser_value",
+              "$filter": "statuscode eq 417200005 and cd_resolvedon le @{addDays(utcNow(), mul(-1, int(parameters('CaseDesk Auto Close Days (cd_AutoCloseDays)'))))}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Apply_to_each_resolved_case": {
+          "foreach": "@outputs('List_resolved_cases_past_threshold')?['body/value']",
+          "actions": {
+            "List_inbound_replies_after_resolution": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "72939f51-6e44-5644-b2db-24683b8c92d0"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "emails",
+                  "$select": "activityid",
+                  "$filter": "_regardingobjectid_value eq @{items('Apply_to_each_resolved_case')?['cd_caseid']} and directioncode eq false and createdon gt @{items('Apply_to_each_resolved_case')?['cd_resolvedon']}",
+                  "$top": 1
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Condition_-_Customer_replied": {
+              "actions": {
+                "Condition_-_Not_already_flagged": {
+                  "actions": {
+                    "Update_a_row_-_Customer_reply_pending": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "a31326df-55b1-51ff-b529-78aeca59d7f7"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "UpdateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "cd_cases",
+                          "recordId": "@items('Apply_to_each_resolved_case')?['cd_caseid']",
+                          "item/cd_customerreplypending": true
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Condition_-_Owner_is_a_user": {
+                      "actions": {
+                        "Add_a_new_row_-_App_notification": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "50c873d7-cdd3-5b60-b077-bad3b2f17dd0"
+                          },
+                          "type": "OpenApiConnection",
+                          "inputs": {
+                            "host": {
+                              "connectionName": "shared_commondataserviceforapps",
+                              "operationId": "CreateRecord",
+                              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                            },
+                            "parameters": {
+                              "entityName": "appnotifications",
+                              "item/title": "Customer replied: @{items('Apply_to_each_resolved_case')?['cd_casenumber']}",
+                              "item/body": "@{items('Apply_to_each_resolved_case')?['cd_name']} was not auto-closed because the customer replied after it was resolved. Review it and reopen or close it.",
+                              "item/ownerid@odata.bind": "systemusers(@{items('Apply_to_each_resolved_case')?['_owninguser_value']})",
+                              "item/icontype": 100000003,
+                              "item/toasttype": 200000000,
+                              "item/priority": 200000000,
+                              "item/data": "{\"actions\":[{\"title\":\"Open case\",\"data\":{\"url\":\"?pagetype=entityrecord&etn=cd_case&id=@{items('Apply_to_each_resolved_case')?['cd_caseid']}\",\"navigationTarget\":\"newWindow\"}}]}"
+                            },
+                            "authentication": "@parameters('$authentication')"
+                          }
+                        }
+                      },
+                      "runAfter": {
+                        "Update_a_row_-_Customer_reply_pending": [
+                          "Succeeded"
+                        ]
+                      },
+                      "expression": {
+                        "and": [
+                          {
+                            "not": {
+                              "equals": [
+                                "@empty(items('Apply_to_each_resolved_case')?['_owninguser_value'])",
+                                true
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "873ac6a3-1484-5bb3-b619-c215fd18e498"
+                      },
+                      "type": "If"
+                    }
+                  },
+                  "runAfter": {},
+                  "expression": {
+                    "and": [
+                      {
+                        "not": {
+                          "equals": [
+                            "@items('Apply_to_each_resolved_case')?['cd_customerreplypending']",
+                            true
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "6d991192-da0f-59ec-9fde-2ddb8373ac0d"
+                  },
+                  "type": "If"
+                }
+              },
+              "runAfter": {
+                "List_inbound_replies_after_resolution": [
+                  "Succeeded"
+                ]
+              },
+              "expression": {
+                "and": [
+                  {
+                    "not": {
+                      "equals": [
+                        "@empty(outputs('List_inbound_replies_after_resolution')?['body/value'])",
+                        true
+                      ]
+                    }
+                  }
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "529e59fa-aa43-5eb0-a4e4-d6ed37885865"
+              },
+              "type": "If",
+              "else": {
+                "actions": {
+                  "Update_a_row_-_Close_case": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "568af4b0-bcf0-513b-9249-8cb12941912a"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "UpdateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "cd_cases",
+                        "recordId": "@items('Apply_to_each_resolved_case')?['cd_caseid']",
+                        "item/statecode": 1,
+                        "item/statuscode": 2
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "List_resolved_cases_past_threshold": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c3165309-871d-58c5-b86e-226a4e527673"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

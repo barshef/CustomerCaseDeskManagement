@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SdkMessageProcessingStep Name="CaseDesk.Plugins.PublishCaseClosedPlugin: Update of cd_case (PostOperation, Async)" SdkMessageProcessingStepId="{1eacde87-49d9-4c58-8667-9ccf8ec7ba45}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+  <PluginTypeName>CaseDesk.Plugins.PublishCaseClosedPlugin, CaseDesk.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4084e1bede633e50</PluginTypeName>
+  <PluginTypeId>c0ae17c8-990e-4a85-a590-4786275bca96</PluginTypeId>
+  <PrimaryEntity>cd_case</PrimaryEntity>
+  <AsyncAutoDelete>1</AsyncAutoDelete>
+  <Description>S3: publish CaseClosed to Service Bus or webhook per cd_CaseClosedTransport (FR-010).</Description>
+  <FilteringAttributes>statecode,statuscode</FilteringAttributes>
+  <ImpersonatingUserIdName></ImpersonatingUserIdName>
+  <InvocationSource>1</InvocationSource>
+  <Mode>1</Mode>
+  <Rank>1</Rank>
+  <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+  <Stage>40</Stage>
+  <IsCustomizable>1</IsCustomizable>
+  <IsHidden>0</IsHidden>
+  <SupportedDeployment>0</SupportedDeployment>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <SdkMessageProcessingStepImages>
+    <SdkMessageProcessingStepImage Name="PreImage">
+      <SdkMessageProcessingStepImageId>{4e907000-2124-4865-95af-f8aafbbc2f89}</SdkMessageProcessingStepImageId>
+      <Attributes>statuscode</Attributes>
+      <EntityAlias>PreImage</EntityAlias>
+      <ImageType>0</ImageType>
+      <MessagePropertyName>Target</MessagePropertyName>
+      <IsCustomizable>1</IsCustomizable>
+    </SdkMessageProcessingStepImage>
+    <SdkMessageProcessingStepImage Name="PostImage">
+      <SdkMessageProcessingStepImageId>{4edb3960-fa25-432e-a224-ea1dc22533fa}</SdkMessageProcessingStepImageId>
+      <EntityAlias>PostImage</EntityAlias>
+      <ImageType>1</ImageType>
+      <MessagePropertyName>Target</MessagePropertyName>
+      <IsCustomizable>1</IsCustomizable>
+    </SdkMessageProcessingStepImage>
+  </SdkMessageProcessingStepImages>
+</SdkMessageProcessingStep>

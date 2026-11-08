@@ -1,0 +1,19 @@
+<customapi uniquename="cd_EscalateCase">
+  <allowedcustomprocessingsteptype>0</allowedcustomprocessingsteptype>
+  <bindingtype>1</bindingtype>
+  <boundentitylogicalname>cd_case</boundentitylogicalname>
+  <description default="Escalates an open case: sets priority Critical, assigns it to the supervisor team and adds an internal note, in one transaction.">
+    <label description="Escalates an open case: sets priority Critical, assigns it to the supervisor team and adds an internal note, in one transaction." languagecode="1033" />
+  </description>
+  <displayname default="Escalate Case">
+    <label description="Escalate Case" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isfunction>0</isfunction>
+  <isprivate>0</isprivate>
+  <name>cd_EscalateCase</name>
+  <plugintypeid>
+    <plugintypeexportkey>7a777763-bbbd-4a4c-aace-ac6f87a13ca0</plugintypeexportkey>
+  </plugintypeid>
+  <workflowsdkstepenabled>0</workflowsdkstepenabled>
+</customapi>

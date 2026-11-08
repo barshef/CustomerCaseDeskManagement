@@ -1,0 +1,14 @@
+<environmentvariabledefinition schemaname="cd_CaseClosedServiceBusEndpointName">
+  <defaultvalue>CaseDesk CaseClosed ServiceBus</defaultvalue>
+  <description default="Name of the Service Bus service endpoint registration used when the transport is ServiceBus.">
+    <label description="Name of the Service Bus service endpoint registration used when the transport is ServiceBus." languagecode="1033" />
+  </description>
+  <displayname default="CaseClosed Service Bus Endpoint Name">
+    <label description="CaseClosed Service Bus Endpoint Name" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.0</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000000</type>
+</environmentvariabledefinition>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{249dcb34-5223-4a4d-8b10-56692b6587f7}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cd_name" select="1" icon="1" preview="1">
+        <row name="result" id="cd_refundapprovalid">
+          <cell name="cd_name" width="150" />
+          <cell name="cd_caseid" width="150" />
+          <cell name="cd_decision" width="150" />
+          <cell name="cd_requestedbyid" width="150" />
+          <cell name="cd_approverid" width="150" />
+          <cell name="cd_decisiondate" width="150" />
+          <cell name="createdon" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cd_refundapproval">
+          <attribute name="cd_name" />
+          <attribute name="cd_caseid" />
+          <attribute name="cd_decision" />
+          <attribute name="cd_requestedbyid" />
+          <attribute name="cd_approverid" />
+          <attribute name="cd_decisiondate" />
+          <attribute name="createdon" />
+          <attribute name="cd_refundapprovalid" />
+          <order attribute="createdon" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+            <condition attribute="cd_decision" operator="eq" value="417200000" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Pending Refund Approvals" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

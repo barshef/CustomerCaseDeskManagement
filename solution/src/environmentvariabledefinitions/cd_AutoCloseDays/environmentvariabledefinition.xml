@@ -1,0 +1,14 @@
+<environmentvariabledefinition schemaname="cd_AutoCloseDays">
+  <defaultvalue>5</defaultvalue>
+  <description default="Days after resolution before a resolved case is closed automatically.">
+    <label description="Days after resolution before a resolved case is closed automatically." languagecode="1033" />
+  </description>
+  <displayname default="Auto-close Days">
+    <label description="Auto-close Days" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.0</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000001</type>
+</environmentvariabledefinition>

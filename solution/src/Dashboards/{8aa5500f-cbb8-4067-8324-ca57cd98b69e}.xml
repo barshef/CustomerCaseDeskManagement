@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <LocalizedNames>
+    <LocalizedName description="CaseDesk Agent" languagecode="1033" />
+  </LocalizedNames>
+  <Descriptions>
+    <Description description="My open cases by priority, and my open cases soonest due first." languagecode="1033" />
+  </Descriptions>
+  <FormId>{8aa5500f-cbb8-4067-8324-ca57cd98b69e}</FormId>
+  <IsCustomizable>1</IsCustomizable>
+  <IsDefault>0</IsDefault>
+  <FormXml>
+    <forms type="dashboard">
+      <form>
+        <tabs>
+          <tab showlabel="false" verticallayout="true" id="{f2a0e844-f21b-5afb-aca4-aa6427e018bb}">
+            <labels>
+              <label description="CaseDesk Agent" languagecode="1033" />
+            </labels>
+            <columns>
+              <column width="100%">
+                <sections>
+                  <section showlabel="false" showbar="false" columns="11" id="{2a0dd642-1978-5f51-b3c1-27d59f2a0a20}">
+                    <labels>
+                      <label description="CaseDesk Agent" languagecode="1033" />
+                    </labels>
+                    <rows>
+                      <row>
+                        <cell id="{56a8fe7b-a2e6-5fc0-9a48-79c7d75df6c9}" showlabel="false" colspan="1" auto="false" rowspan="12">
+                          <control id="MyOpenByPriority" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{7bf4a964-d490-5990-9891-cd3a80b38714}">
+                            <parameters>
+                              <ViewId>{a9d1ee2c-a1a0-4aaa-9892-3d696a834277}</ViewId>
+                              <IsUserView>false</IsUserView>
+                              <RelationshipName />
+                              <TargetEntityType>cd_case</TargetEntityType>
+                              <AutoExpand>Fixed</AutoExpand>
+                              <EnableQuickFind>false</EnableQuickFind>
+                              <EnableViewPicker>false</EnableViewPicker>
+                              <ViewIds>{a9d1ee2c-a1a0-4aaa-9892-3d696a834277}</ViewIds>
+                              <EnableJumpBar>false</EnableJumpBar>
+                              <ChartGridMode>Chart</ChartGridMode>
+                              <VisualizationId>{ED414C25-F988-4FAF-B648-31D099A12BFE}</VisualizationId>
+                              <IsUserChart>false</IsUserChart>
+                              <EnableChartPicker>false</EnableChartPicker>
+                              <RecordsPerPage>12</RecordsPerPage>
+                            </parameters>
+                          </control>
+                        </cell>
+                        <cell id="{01fc482f-5b08-572a-b854-28e2fac64f96}" showlabel="false" colspan="1" auto="false" rowspan="12">
+                          <control id="MyOpenCases" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{8298f632-76e8-5f1a-afdb-286d6566ee9a}">
+                            <parameters>
+                              <ViewId>{a9d1ee2c-a1a0-4aaa-9892-3d696a834277}</ViewId>
+                              <IsUserView>false</IsUserView>
+                              <RelationshipName />
+                              <TargetEntityType>cd_case</TargetEntityType>
+                              <AutoExpand>Fixed</AutoExpand>
+                              <EnableQuickFind>false</EnableQuickFind>
+                              <EnableViewPicker>false</EnableViewPicker>
+                              <ViewIds>{a9d1ee2c-a1a0-4aaa-9892-3d696a834277}</ViewIds>
+                              <EnableJumpBar>false</EnableJumpBar>
+                              <ChartGridMode>Grid</ChartGridMode>
+                              <VisualizationId />
+                              <IsUserChart>false</IsUserChart>
+                              <EnableChartPicker>false</EnableChartPicker>
+                              <RecordsPerPage>12</RecordsPerPage>
+                            </parameters>
+                          </control>
+                        </cell>
+                      </row>
+                    </rows>
+                  </section>
+                </sections>
+              </column>
+            </columns>
+          </tab>
+        </tabs>
+      </form>
+    </forms>
+  </FormXml>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <IsTabletEnabled>0</IsTabletEnabled>
+</Dashboard>

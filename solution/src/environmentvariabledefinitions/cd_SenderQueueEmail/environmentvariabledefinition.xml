@@ -1,0 +1,13 @@
+<environmentvariabledefinition schemaname="cd_SenderQueueEmail">
+  <description default="From address (queue or user mailbox) for customer emails. Set per environment.">
+    <label description="From address (queue or user mailbox) for customer emails. Set per environment." languagecode="1033" />
+  </description>
+  <displayname default="Sender Queue Email">
+    <label description="Sender Queue Email" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.0</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000000</type>
+</environmentvariabledefinition>

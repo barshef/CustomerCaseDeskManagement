@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{657852d6-afc3-422e-a2a8-b7f4397863cf}</savedqueryid>
+    <layoutxml>
+      <grid name="cd_refundapprovals" jump="cd_name" select="1" icon="1" preview="1">
+        <row name="cd_refundapproval" id="cd_refundapprovalid">
+          <cell name="cd_name" width="150" />
+          <cell name="cd_caseid" width="150" />
+          <cell name="cd_decision" width="150" />
+          <cell name="cd_requestedbyid" width="150" />
+          <cell name="cd_approverid" width="150" />
+          <cell name="cd_decisiondate" width="150" />
+          <cell name="createdon" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>2</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cd_refundapproval">
+          <attribute name="cd_name" />
+          <attribute name="cd_caseid" />
+          <attribute name="cd_decision" />
+          <attribute name="cd_requestedbyid" />
+          <attribute name="cd_approverid" />
+          <attribute name="cd_decisiondate" />
+          <attribute name="createdon" />
+          <attribute name="cd_refundapprovalid" />
+          <order attribute="cd_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Refund Approval Associated View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

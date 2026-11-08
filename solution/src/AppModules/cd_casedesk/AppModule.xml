@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AppModule>
+  <UniqueName>cd_casedesk</UniqueName>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <WebResourceId>953b9fac-1e5e-e611-80d6-00155ded156f</WebResourceId>
+  <OptimizedFor></OptimizedFor>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <FormFactor>1</FormFactor>
+  <ClientType>4</ClientType>
+  <NavigationType>0</NavigationType>
+  <AppModuleComponents>
+    <AppModuleComponent type="1" schemaName="account" />
+    <AppModuleComponent type="1" schemaName="cd_case" />
+    <AppModuleComponent type="1" schemaName="cd_casenote" />
+    <AppModuleComponent type="1" schemaName="cd_refundapproval" />
+    <AppModuleComponent type="1" schemaName="cd_slapolicy" />
+    <AppModuleComponent type="1" schemaName="contact" />
+    <AppModuleComponent type="60" id="{8aa5500f-cbb8-4067-8324-ca57cd98b69e}" />
+    <AppModuleComponent type="60" id="{9ca3e552-20e0-4b98-bccb-1ebf8eea47bb}" />
+    <AppModuleComponent type="62" schemaName="cd_casedesk" />
+  </AppModuleComponents>
+  <AppModuleRoleMaps>
+    <Role id="{d03910ad-e39d-4d0a-8162-a068b4d7e861}" />
+    <Role id="{399d12be-2523-4d4f-bd1f-6c2dbcffe58a}" />
+    <Role id="{627090ff-40a3-4053-8790-584edc5be201}" />
+    <Role id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+  </AppModuleRoleMaps>
+  <LocalizedNames>
+    <LocalizedName description="CaseDesk" languagecode="1033" />
+  </LocalizedNames>
+  <Descriptions>
+    <Description description="Customer case management: log, assign, work and close cases against an SLA." languagecode="1033" />
+  </Descriptions>
+</AppModule>

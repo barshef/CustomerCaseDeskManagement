@@ -1,0 +1,11 @@
+{
+    "extends": "./node_modules/pcf-scripts/tsconfig_base.json",
+    "compilerOptions": {
+        "module": "commonjs",
+        "esModuleInterop": true,
+        "isolatedModules": true,
+        "types": ["jest", "node"]
+    },
+    "include": ["SlaBadge/**/*.ts", "SlaBadge/**/*.tsx"],
+    "exclude": ["./node_modules", "./out", "SlaBadge/generated/**"]
+}

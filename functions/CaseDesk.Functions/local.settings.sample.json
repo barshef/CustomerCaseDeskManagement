@@ -1,0 +1,11 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "APPLICATIONINSIGHTS_CONNECTION_STRING": "",
+    "ServiceBusConnection": "Endpoint=sb://<your-namespace>.servicebus.windows.net/;SharedAccessKeyName=function-listen;SharedAccessKey=<listen-key>",
+    "ExternalStubUrl": "http://localhost:7071/api/external/caseclosed",
+    "ExternalStubKey": "<function-key-or-empty-locally>"
+  }
+}

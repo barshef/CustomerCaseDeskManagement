@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RibbonDiffXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CustomActions>
+    <CustomAction Id="cd.cd_case.Escalate.CustomAction" Location="Mscrm.Form.cd_case.MainTab.Save.Controls._children" Sequence="45">
+      <CommandUIDefinition>
+        <Button Id="cd.cd_case.Escalate.Button" Command="cd.cd_case.Escalate.Command" LabelText="$LocLabels:cd.cd_case.Escalate.Label" ToolTipTitle="$LocLabels:cd.cd_case.Escalate.Label" ToolTipDescription="$LocLabels:cd.cd_case.Escalate.Tip" TemplateAlias="o1" />
+      </CommandUIDefinition>
+    </CustomAction>
+  </CustomActions>
+  <Templates>
+    <RibbonTemplates Id="Mscrm.Templates"></RibbonTemplates>
+  </Templates>
+  <CommandDefinitions>
+    <CommandDefinition Id="cd.cd_case.Escalate.Command">
+      <EnableRules>
+        <EnableRule Id="cd.cd_case.Escalate.CanEscalate" />
+      </EnableRules>
+      <DisplayRules>
+        <DisplayRule Id="cd.cd_case.Existing" />
+      </DisplayRules>
+      <Actions>
+        <JavaScriptFunction Library="$webresource:cd_/scripts/case.ribbon.js" FunctionName="CaseDesk.Ribbon.escalate">
+          <CrmParameter Value="PrimaryControl" />
+        </JavaScriptFunction>
+      </Actions>
+    </CommandDefinition>
+  </CommandDefinitions>
+  <RuleDefinitions>
+    <TabDisplayRules />
+    <DisplayRules>
+      <DisplayRule Id="cd.cd_case.Existing">
+        <FormStateRule State="Create" InvertResult="true" />
+      </DisplayRule>
+    </DisplayRules>
+    <EnableRules>
+      <EnableRule Id="cd.cd_case.Escalate.CanEscalate">
+        <CustomRule FunctionName="CaseDesk.Ribbon.canEscalate" Library="$webresource:cd_/scripts/case.ribbon.js" Default="false">
+          <CrmParameter Value="PrimaryControl" />
+        </CustomRule>
+      </EnableRule>
+    </EnableRules>
+  </RuleDefinitions>
+  <LocLabels>
+    <LocLabel Id="cd.cd_case.Escalate.Label">
+      <Titles>
+        <Title description="Escalate" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="cd.cd_case.Escalate.Tip">
+      <Titles>
+        <Title description="Set the case to Critical, assign it to the supervisor team and add an internal note" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+  </LocLabels>
+</RibbonDiffXml>

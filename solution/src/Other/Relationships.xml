@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EntityRelationships xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <EntityRelationship Name="business_unit_cd_case" />
+  <EntityRelationship Name="business_unit_cd_casenote" />
+  <EntityRelationship Name="business_unit_cd_refundapproval" />
+  <EntityRelationship Name="cd_account_cd_case" />
+  <EntityRelationship Name="cd_case_cd_casenote" />
+  <EntityRelationship Name="cd_case_cd_refundapproval" />
+  <EntityRelationship Name="cd_contact_cd_case" />
+  <EntityRelationship Name="cd_slapolicy_cd_case" />
+  <EntityRelationship Name="cd_systemuser_cd_refundapproval_approverid" />
+  <EntityRelationship Name="cd_systemuser_cd_refundapproval_requestedbyid" />
+  <EntityRelationship Name="lk_cd_case_createdby" />
+  <EntityRelationship Name="lk_cd_case_modifiedby" />
+  <EntityRelationship Name="lk_cd_casenote_createdby" />
+  <EntityRelationship Name="lk_cd_casenote_modifiedby" />
+  <EntityRelationship Name="lk_cd_refundapproval_createdby" />
+  <EntityRelationship Name="lk_cd_refundapproval_modifiedby" />
+  <EntityRelationship Name="lk_cd_slapolicy_createdby" />
+  <EntityRelationship Name="lk_cd_slapolicy_modifiedby" />
+  <EntityRelationship Name="organization_cd_slapolicy" />
+  <EntityRelationship Name="owner_cd_case" />
+  <EntityRelationship Name="owner_cd_casenote" />
+  <EntityRelationship Name="owner_cd_refundapproval" />
+  <EntityRelationship Name="team_cd_case" />
+  <EntityRelationship Name="team_cd_casenote" />
+  <EntityRelationship Name="team_cd_refundapproval" />
+  <EntityRelationship Name="TransactionCurrency_cd_Case" />
+  <EntityRelationship Name="user_cd_case" />
+  <EntityRelationship Name="user_cd_casenote" />
+  <EntityRelationship Name="user_cd_refundapproval" />
+</EntityRelationships>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{ce74676f-4c87-4058-a684-7ce4661ab724}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cd_casenumber" select="1" icon="1" preview="1">
+        <row name="result" id="cd_caseid">
+          <cell name="cd_casenumber" width="110" />
+          <cell name="cd_name" width="250" />
+          <cell name="cd_accountid" width="180" />
+          <cell name="cd_priority" width="100" />
+          <cell name="cd_category" width="100" />
+          <cell name="statuscode" width="130" />
+          <cell name="ownerid" width="150" />
+          <cell name="cd_duedate" width="140" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cd_case">
+          <attribute name="cd_casenumber" />
+          <attribute name="cd_name" />
+          <attribute name="cd_accountid" />
+          <attribute name="cd_priority" />
+          <attribute name="cd_category" />
+          <attribute name="statuscode" />
+          <attribute name="ownerid" />
+          <attribute name="cd_duedate" />
+          <attribute name="cd_caseid" />
+          <order attribute="cd_duedate" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Cases" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

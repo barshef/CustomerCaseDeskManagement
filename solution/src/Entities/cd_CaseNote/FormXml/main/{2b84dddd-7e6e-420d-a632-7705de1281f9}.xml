@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{2b84dddd-7e6e-420d-a632-7705de1281f9}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab name="general" id="{dc6d5368-c246-5138-b311-e4989e110e2b}" expanded="true" showlabel="true" verticallayout="true">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+          <column width="100%">
+            <sections>
+                <section name="note" showlabel="true" showbar="false" columns="1" id="{e45e955a-9f63-5929-afc2-b3deaa6e1ef6}">
+                  <labels>
+                    <label description="Note" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{8ef26fb3-9683-53ee-b288-b0233a27e930}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Case" languagecode="1033" />
+                        </labels>
+                        <control id="cd_caseid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cd_caseid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{212c2742-a0b2-5eac-b71d-a3910ed7fbdb}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Subject" languagecode="1033" />
+                        </labels>
+                        <control id="cd_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cd_name" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{94b66cbb-7f5c-5987-9d56-92ce76a42691}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Note Type" languagecode="1033" />
+                        </labels>
+                        <control id="cd_notetype" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="cd_notetype" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{03d7d58d-60fb-534d-bb3a-1d5f16bf3fb5}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Is Open" languagecode="1033" />
+                        </labels>
+                        <control id="cd_isopen" classid="{67FAC785-CD58-4f9f-ABB3-4B7DDC6ED5ED}" datafieldname="cd_isopen" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1e774b4e-4e69-5e13-b604-7eeaf580c7a8}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Note" languagecode="1033" />
+                        </labels>
+                        <control id="cd_notetext" classid="{E0DECE4B-6FC8-4a8f-A065-082708572369}" datafieldname="cd_notetext" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="ownership" showlabel="true" showbar="false" columns="1" id="{7db45cec-9c5d-58a9-a3e6-42ca072ee36e}">
+                  <labels>
+                    <label description="Ownership" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{16fe7bda-2745-5877-99cc-644064b3bb03}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4dbd5497-8acd-544f-8484-672401d7ba97}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Created On" languagecode="1033" />
+                        </labels>
+                        <control id="createdon" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="createdon" disabled="true" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+            </sections>
+          </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Case Note" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Case Note main form" languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

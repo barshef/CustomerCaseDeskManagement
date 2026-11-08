@@ -1,0 +1,119 @@
+{
+  "BusinessUnitId": "4f0b1c2a-6e3d-4b7a-9c58-1d2e3f4a5b6c",
+  "CorrelationId": "b1e2c3d4-a5f6-4789-8abc-def012345678",
+  "Depth": 1,
+  "InitiatingUserAzureActiveDirectoryObjectId": "00000000-0000-0000-0000-000000000000",
+  "InitiatingUserId": "9a8b7c6d-5e4f-4a3b-2c1d-0e9f8a7b6c5d",
+  "InputParameters": [
+    {
+      "key": "Target",
+      "value": {
+        "__type": "Entity:http:\/\/schemas.microsoft.com\/xrm\/2011\/Contracts",
+        "Attributes": [
+          { "key": "statecode", "value": { "__type": "OptionSetValue:http:\/\/schemas.microsoft.com\/xrm\/2011\/Contracts", "Value": 1 } },
+          { "key": "statuscode", "value": { "__type": "OptionSetValue:http:\/\/schemas.microsoft.com\/xrm\/2011\/Contracts", "Value": 2 } },
+          { "key": "cd_caseid", "value": "7d3f2a10-5c4b-4e8e-9b1a-2f6c8d9e0a11" },
+          { "key": "modifiedon", "value": "\/Date(1795169700000)\/" },
+          { "key": "modifiedby", "value": { "__type": "EntityReference:http:\/\/schemas.microsoft.com\/xrm\/2011\/Contracts", "Id": "9a8b7c6d-5e4f-4a3b-2c1d-0e9f8a7b6c5d", "KeyAttributes": [], "LogicalName": "systemuser", "Name": null, "RowVersion": null } }
+        ],
+        "EntityState": null,
+        "FormattedValues": [
+          { "key": "statecode", "value": "Inactive" },
+          { "key": "statuscode", "value": "Closed" }
+        ],
+        "Id": "7d3f2a10-5c4b-4e8e-9b1a-2f6c8d9e0a11",
+        "KeyAttributes": [],
+        "LogicalName": "cd_case",
+        "RelatedEntities": [],
+        "RowVersion": null
+      }
+    },
+    { "key": "ConcurrencyBehavior", "value": 0 }
+  ],
+  "IsExecutingOffline": false,
+  "IsInTransaction": false,
+  "IsOfflinePlayback": false,
+  "IsolationMode": 2,
+  "MessageName": "Update",
+  "Mode": 1,
+  "OperationCreatedOn": "\/Date(1795169700000+0000)\/",
+  "OperationId": "c0ffee00-1234-4abc-8def-0123456789ab",
+  "OrganizationId": "e5f6a7b8-c9d0-4e1f-a2b3-c4d5e6f7a8b9",
+  "OrganizationName": "unq0123456789abcdef",
+  "OutputParameters": [],
+  "OwningExtension": {
+    "Id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+    "KeyAttributes": [],
+    "LogicalName": "sdkmessageprocessingstep",
+    "Name": "CaseDesk.Plugins.PublishCaseClosedPlugin: Update of cd_case",
+    "RowVersion": null
+  },
+  "ParentContext": null,
+  "PostEntityImages": [
+    {
+      "key": "PostImage",
+      "value": {
+        "Attributes": [
+          { "key": "cd_caseid", "value": "7d3f2a10-5c4b-4e8e-9b1a-2f6c8d9e0a11" },
+          { "key": "cd_casenumber", "value": "CD-00042" },
+          { "key": "cd_name", "value": "Refund not received for order 1187" },
+          { "key": "cd_category", "value": { "__type": "OptionSetValue:http:\/\/schemas.microsoft.com\/xrm\/2011\/Contracts", "Value": 417200003 } },
+          { "key": "cd_priority", "value": { "__type": "OptionSetValue:http:\/\/schemas.microsoft.com\/xrm\/2011\/Contracts", "Value": 417200002 } },
+          { "key": "cd_accountid", "value": { "__type": "EntityReference:http:\/\/schemas.microsoft.com\/xrm\/2011\/Contracts", "Id": "aa11bb22-cc33-4d44-8e55-ff6677889900", "KeyAttributes": [], "LogicalName": "account", "Name": "Contoso Ltd", "RowVersion": null } },
+          { "key": "cd_contactid", "value": { "__type": "EntityReference:http:\/\/schemas.microsoft.com\/xrm\/2011\/Contracts", "Id": "12345678-90ab-4cde-8f01-234567890abc", "KeyAttributes": [], "LogicalName": "contact", "Name": "Alex Wu", "RowVersion": null } },
+          { "key": "createdon", "value": "\/Date(1794992400000)\/" },
+          { "key": "cd_duedate", "value": "\/Date(1795078800000)\/" },
+          { "key": "cd_resolvedon", "value": "\/Date(1795015800000+0000)\/" },
+          { "key": "cd_closedon", "value": "\/Date(1795169700000)\/" },
+          { "key": "cd_refundamount", "value": { "__type": "Money:http:\/\/schemas.microsoft.com\/xrm\/2011\/Contracts", "Value": 49.99 } },
+          { "key": "cd_refundamount_base", "value": { "__type": "Money:http:\/\/schemas.microsoft.com\/xrm\/2011\/Contracts", "Value": 49.99 } },
+          { "key": "transactioncurrencyid", "value": { "__type": "EntityReference:http:\/\/schemas.microsoft.com\/xrm\/2011\/Contracts", "Id": "0f1e2d3c-4b5a-4968-8776-655443322110", "KeyAttributes": [], "LogicalName": "transactioncurrency", "Name": "US Dollar", "RowVersion": null } },
+          { "key": "statecode", "value": { "__type": "OptionSetValue:http:\/\/schemas.microsoft.com\/xrm\/2011\/Contracts", "Value": 1 } },
+          { "key": "statuscode", "value": { "__type": "OptionSetValue:http:\/\/schemas.microsoft.com\/xrm\/2011\/Contracts", "Value": 2 } },
+          { "key": "ownerid", "value": { "__type": "EntityReference:http:\/\/schemas.microsoft.com\/xrm\/2011\/Contracts", "Id": "9a8b7c6d-5e4f-4a3b-2c1d-0e9f8a7b6c5d", "KeyAttributes": [], "LogicalName": "systemuser", "Name": "Sam Agent", "RowVersion": null } },
+          { "key": "modifiedon", "value": "\/Date(1795169700000)\/" }
+        ],
+        "EntityState": null,
+        "FormattedValues": [
+          { "key": "cd_category", "value": "Refund" },
+          { "key": "cd_priority", "value": "High" },
+          { "key": "cd_refundamount", "value": "$49.99" },
+          { "key": "statecode", "value": "Inactive" },
+          { "key": "statuscode", "value": "Closed" }
+        ],
+        "Id": "7d3f2a10-5c4b-4e8e-9b1a-2f6c8d9e0a11",
+        "KeyAttributes": [],
+        "LogicalName": "cd_case",
+        "RelatedEntities": [],
+        "RowVersion": "1234567"
+      }
+    }
+  ],
+  "PreEntityImages": [
+    {
+      "key": "PreImage",
+      "value": {
+        "Attributes": [
+          { "key": "statuscode", "value": { "__type": "OptionSetValue:http:\/\/schemas.microsoft.com\/xrm\/2011\/Contracts", "Value": 417200005 } }
+        ],
+        "EntityState": null,
+        "FormattedValues": [ { "key": "statuscode", "value": "Resolved" } ],
+        "Id": "7d3f2a10-5c4b-4e8e-9b1a-2f6c8d9e0a11",
+        "KeyAttributes": [],
+        "LogicalName": "cd_case",
+        "RelatedEntities": [],
+        "RowVersion": null
+      }
+    }
+  ],
+  "PrimaryEntityId": "7d3f2a10-5c4b-4e8e-9b1a-2f6c8d9e0a11",
+  "PrimaryEntityName": "cd_case",
+  "RequestId": "d4c3b2a1-0f9e-4d8c-b7a6-958473625140",
+  "SecondaryEntityName": "none",
+  "SharedVariables": [
+    { "key": "IsAutoTransact", "value": true }
+  ],
+  "Stage": 40,
+  "UserAzureActiveDirectoryObjectId": "00000000-0000-0000-0000-000000000000",
+  "UserId": "9a8b7c6d-5e4f-4a3b-2c1d-0e9f8a7b6c5d"
+}

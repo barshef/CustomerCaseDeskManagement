@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <LocalizedNames>
+    <LocalizedName description="CaseDesk Supervisor" languagecode="1033" />
+  </LocalizedNames>
+  <Descriptions>
+    <Description description="Team SLA breaches this week by owner and priority, and the breached cases." languagecode="1033" />
+  </Descriptions>
+  <FormId>{9ca3e552-20e0-4b98-bccb-1ebf8eea47bb}</FormId>
+  <IsCustomizable>1</IsCustomizable>
+  <IsDefault>0</IsDefault>
+  <FormXml>
+    <forms type="dashboard">
+      <form>
+        <tabs>
+          <tab showlabel="false" verticallayout="true" id="{35f5882d-bee4-5d5f-998b-df69722c04cd}">
+            <labels>
+              <label description="CaseDesk Supervisor" languagecode="1033" />
+            </labels>
+            <columns>
+              <column width="100%">
+                <sections>
+                  <section showlabel="false" showbar="false" columns="111" id="{be03d752-3db8-5ab5-81a1-007da64d4e6a}">
+                    <labels>
+                      <label description="CaseDesk Supervisor" languagecode="1033" />
+                    </labels>
+                    <rows>
+                      <row>
+                        <cell id="{88382af8-e322-5661-b62a-97b6f1de257f}" showlabel="false" colspan="1" auto="false" rowspan="12">
+                          <control id="BreachesByOwner" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{a5038133-2c96-5b44-8e78-e8eaa2b33636}">
+                            <parameters>
+                              <ViewId>{bc023c42-94e7-40ad-b4c9-454f2bf3b61e}</ViewId>
+                              <IsUserView>false</IsUserView>
+                              <RelationshipName />
+                              <TargetEntityType>cd_case</TargetEntityType>
+                              <AutoExpand>Fixed</AutoExpand>
+                              <EnableQuickFind>false</EnableQuickFind>
+                              <EnableViewPicker>false</EnableViewPicker>
+                              <ViewIds>{bc023c42-94e7-40ad-b4c9-454f2bf3b61e}</ViewIds>
+                              <EnableJumpBar>false</EnableJumpBar>
+                              <ChartGridMode>Chart</ChartGridMode>
+                              <VisualizationId>{96E547D1-1F91-4076-A2D3-F3433E071A36}</VisualizationId>
+                              <IsUserChart>false</IsUserChart>
+                              <EnableChartPicker>false</EnableChartPicker>
+                              <RecordsPerPage>12</RecordsPerPage>
+                            </parameters>
+                          </control>
+                        </cell>
+                        <cell id="{0d272181-a9b0-532d-a08e-e69362999d0d}" showlabel="false" colspan="1" auto="false" rowspan="12">
+                          <control id="BreachesByPriority" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{64e09f41-a820-5a1f-a6c5-516a252be63e}">
+                            <parameters>
+                              <ViewId>{bc023c42-94e7-40ad-b4c9-454f2bf3b61e}</ViewId>
+                              <IsUserView>false</IsUserView>
+                              <RelationshipName />
+                              <TargetEntityType>cd_case</TargetEntityType>
+                              <AutoExpand>Fixed</AutoExpand>
+                              <EnableQuickFind>false</EnableQuickFind>
+                              <EnableViewPicker>false</EnableViewPicker>
+                              <ViewIds>{bc023c42-94e7-40ad-b4c9-454f2bf3b61e}</ViewIds>
+                              <EnableJumpBar>false</EnableJumpBar>
+                              <ChartGridMode>Chart</ChartGridMode>
+                              <VisualizationId>{04DB2878-8DC5-451D-BE48-C7040B5F1C7E}</VisualizationId>
+                              <IsUserChart>false</IsUserChart>
+                              <EnableChartPicker>false</EnableChartPicker>
+                              <RecordsPerPage>12</RecordsPerPage>
+                            </parameters>
+                          </control>
+                        </cell>
+                        <cell id="{87fc08cc-3e3a-563e-978b-14efb35ea166}" showlabel="false" colspan="1" auto="false" rowspan="12">
+                          <control id="BreachedCases" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{1792e218-7c4a-527f-b269-5a9c4a6c0c31}">
+                            <parameters>
+                              <ViewId>{bc023c42-94e7-40ad-b4c9-454f2bf3b61e}</ViewId>
+                              <IsUserView>false</IsUserView>
+                              <RelationshipName />
+                              <TargetEntityType>cd_case</TargetEntityType>
+                              <AutoExpand>Fixed</AutoExpand>
+                              <EnableQuickFind>false</EnableQuickFind>
+                              <EnableViewPicker>false</EnableViewPicker>
+                              <ViewIds>{bc023c42-94e7-40ad-b4c9-454f2bf3b61e}</ViewIds>
+                              <EnableJumpBar>false</EnableJumpBar>
+                              <ChartGridMode>Grid</ChartGridMode>
+                              <VisualizationId />
+                              <IsUserChart>false</IsUserChart>
+                              <EnableChartPicker>false</EnableChartPicker>
+                              <RecordsPerPage>12</RecordsPerPage>
+                            </parameters>
+                          </control>
+                        </cell>
+                      </row>
+                    </rows>
+                  </section>
+                </sections>
+              </column>
+            </columns>
+          </tab>
+        </tabs>
+      </form>
+    </forms>
+  </FormXml>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <IsTabletEnabled>0</IsTabletEnabled>
+</Dashboard>

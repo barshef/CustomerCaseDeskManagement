@@ -1,0 +1,11 @@
+# Secrets and saved sign-ins: never committed (constitution V)
+.env
+.auth/
+
+# Local caches and run output
+.cache/
+test-results/
+playwright-report/
+node_modules/
+
+# demo-out/ IS committed: it holds the published films.

@@ -1,0 +1,14 @@
+<environmentvariabledefinition schemaname="cd_CaseClosedWebhookEndpointName">
+  <defaultvalue>CaseDesk CaseClosed Webhook</defaultvalue>
+  <description default="Name of the webhook service endpoint registration used when the transport is Webhook.">
+    <label description="Name of the webhook service endpoint registration used when the transport is Webhook." languagecode="1033" />
+  </description>
+  <displayname default="CaseClosed Webhook Endpoint Name">
+    <label description="CaseClosed Webhook Endpoint Name" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.0</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000000</type>
+</environmentvariabledefinition>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Role id="{d03910ad-e39d-4d0a-8162-a068b4d7e861}" name="CaseDesk Agent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <IsCustomizable>1</IsCustomizable>
+  <IsAutoAssigned>0</IsAutoAssigned>
+  <RolePrivileges>
+    <RolePrivilege name="prvAppendActivity" level="Basic" />
+    <RolePrivilege name="prvAppendcd_Case" level="Local" />
+    <RolePrivilege name="prvAppendcd_CaseNote" level="Local" />
+    <RolePrivilege name="prvAppendNote" level="Basic" />
+    <RolePrivilege name="prvAppendToAccount" level="Local" />
+    <RolePrivilege name="prvAppendTocd_Case" level="Local" />
+    <RolePrivilege name="prvAppendTocd_CaseNote" level="Local" />
+    <RolePrivilege name="prvAppendTocd_SlaPolicy" level="Global" />
+    <RolePrivilege name="prvAppendToContact" level="Local" />
+    <RolePrivilege name="prvCreateActivity" level="Basic" />
+    <RolePrivilege name="prvCreatecd_Case" level="Local" />
+    <RolePrivilege name="prvCreatecd_CaseNote" level="Basic" />
+    <RolePrivilege name="prvCreateNote" level="Basic" />
+    <RolePrivilege name="prvDeletecd_CaseNote" level="Basic" />
+    <RolePrivilege name="prvReadAccount" level="Local" />
+    <RolePrivilege name="prvReadActivity" level="Local" />
+    <RolePrivilege name="prvReadBusinessUnit" level="Global" />
+    <RolePrivilege name="prvReadcd_Case" level="Local" />
+    <RolePrivilege name="prvReadcd_CaseNote" level="Local" />
+    <RolePrivilege name="prvReadcd_RefundApproval" level="Local" />
+    <RolePrivilege name="prvReadcd_SlaPolicy" level="Global" />
+    <RolePrivilege name="prvReadContact" level="Local" />
+    <RolePrivilege name="prvReadCustomAPI" level="Global" />
+    <RolePrivilege name="prvReadCustomAPIRequestParameter" level="Global" />
+    <RolePrivilege name="prvReadCustomAPIResponseProperty" level="Global" />
+    <RolePrivilege name="prvReadEnvironmentVariableDefinition" level="Global" />
+    <RolePrivilege name="prvReadEnvironmentVariableValue" level="Global" />
+    <RolePrivilege name="prvReadNote" level="Local" />
+    <RolePrivilege name="prvReadPluginAssembly" level="Global" />
+    <RolePrivilege name="prvReadPluginType" level="Global" />
+    <RolePrivilege name="prvReadQueue" level="Global" />
+    <RolePrivilege name="prvReadSdkMessage" level="Global" />
+    <RolePrivilege name="prvReadSdkMessageProcessingStep" level="Global" />
+    <RolePrivilege name="prvReadSdkMessageProcessingStepImage" level="Global" />
+    <RolePrivilege name="prvReadTeam" level="Global" />
+    <RolePrivilege name="prvReadUser" level="Global" />
+    <RolePrivilege name="prvWriteActivity" level="Basic" />
+    <RolePrivilege name="prvWritecd_Case" level="Local" />
+    <RolePrivilege name="prvWritecd_CaseNote" level="Basic" />
+    <RolePrivilege name="prvWriteNote" level="Basic" />
+  </RolePrivileges>
+</Role>

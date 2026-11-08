@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PluginAssembly FullName="CaseDesk.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4084e1bede633e50" PluginAssemblyId="d27c16a9-0827-40ce-b313-82aa98778c6c" CustomizationLevel="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <IsolationMode>2</IsolationMode>
+  <SourceType>0</SourceType>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <FileName>/PluginAssemblies/CaseDeskPlugins-D27C16A9-0827-40CE-B313-82AA98778C6C/CaseDeskPlugins.dll</FileName>
+  <PluginTypes>
+    <PluginType AssemblyQualifiedName="CaseDesk.Plugins.CasePreCreatePlugin, CaseDesk.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4084e1bede633e50" PluginTypeId="5d08fcdf-8e39-4fb0-955e-d77d11350589" Name="CaseDesk.Plugins.CasePreCreatePlugin">
+      <FriendlyName>CasePreCreatePlugin</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="CaseDesk.Plugins.CasePreUpdatePlugin, CaseDesk.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4084e1bede633e50" PluginTypeId="63257b08-2733-49a1-812f-0c8fec9897aa" Name="CaseDesk.Plugins.CasePreUpdatePlugin">
+      <FriendlyName>CasePreUpdatePlugin</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="CaseDesk.Plugins.PublishCaseClosedPlugin, CaseDesk.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4084e1bede633e50" PluginTypeId="c0ae17c8-990e-4a85-a590-4786275bca96" Name="CaseDesk.Plugins.PublishCaseClosedPlugin">
+      <FriendlyName>PublishCaseClosedPlugin</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="CaseDesk.Plugins.EscalateCasePlugin, CaseDesk.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4084e1bede633e50" PluginTypeId="7a777763-bbbd-4a4c-aace-ac6f87a13ca0" Name="CaseDesk.Plugins.EscalateCasePlugin">
+      <FriendlyName>EscalateCasePlugin</FriendlyName>
+    </PluginType>
+  </PluginTypes>
+</PluginAssembly>

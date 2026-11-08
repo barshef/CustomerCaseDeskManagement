@@ -1,0 +1,205 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cd_sharedcommondataserviceforapps"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_office365": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cd_sharedoffice365"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Every_15_minutes": {
+          "recurrence": {
+            "frequency": "Minute",
+            "interval": 15
+          },
+          "metadata": {
+            "operationMetadataId": "06d4a77b-c5fd-5f27-8a3f-77b84f9df620"
+          },
+          "type": "Recurrence"
+        }
+      },
+      "actions": {
+        "List_cases_entering_warning_window": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "01400de8-3287-5d10-b24a-eba1782525a5"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cd_cases",
+              "$select": "cd_caseid,cd_casenumber,cd_name,cd_duedate,_owninguser_value",
+              "$filter": "statecode eq 0 and statuscode ne 417200005 and cd_slawarningsent eq false and cd_warningon le @{utcNow()} and cd_duedate gt @{utcNow()}",
+              "$expand": "owninguser($select=fullname,internalemailaddress)"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Apply_to_each_case": {
+          "foreach": "@outputs('List_cases_entering_warning_window')?['body/value']",
+          "actions": {
+            "Condition_-_Owner_is_a_user": {
+              "actions": {
+                "Add_a_new_row_-_App_notification": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "50c873d7-cdd3-5b60-b077-bad3b2f17dd0"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "appnotifications",
+                      "item/title": "SLA warning: @{items('Apply_to_each_case')?['cd_casenumber']}",
+                      "item/body": "@{items('Apply_to_each_case')?['cd_name']} is due @{formatDateTime(items('Apply_to_each_case')?['cd_duedate'], 'dd MMM yyyy HH:mm')} UTC.",
+                      "item/ownerid@odata.bind": "systemusers(@{items('Apply_to_each_case')?['_owninguser_value']})",
+                      "item/icontype": 100000003,
+                      "item/toasttype": 200000000,
+                      "item/priority": 200000000,
+                      "item/data": "{\"actions\":[{\"title\":\"Open case\",\"data\":{\"url\":\"?pagetype=entityrecord&etn=cd_case&id=@{items('Apply_to_each_case')?['cd_caseid']}\",\"navigationTarget\":\"newWindow\"}}]}"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Condition_-_Owner_has_email": {
+                  "actions": {
+                    "Send_an_email_to_owner": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "1baa35d8-d4df-5769-8a53-72fc932f45c5"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_office365",
+                          "operationId": "SendEmailV2",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+                        },
+                        "parameters": {
+                          "emailMessage/To": "@{items('Apply_to_each_case')?['owninguser']?['internalemailaddress']}",
+                          "emailMessage/Subject": "SLA warning: case @{items('Apply_to_each_case')?['cd_casenumber']} is due soon",
+                          "emailMessage/Body": "<p>Hello @{items('Apply_to_each_case')?['owninguser']?['fullname']},</p><p>Case <strong>@{items('Apply_to_each_case')?['cd_casenumber']}</strong> (@{items('Apply_to_each_case')?['cd_name']}) is due <strong>@{formatDateTime(items('Apply_to_each_case')?['cd_duedate'], 'dd MMM yyyy HH:mm')} UTC</strong> and is inside its SLA warning window.</p><p>CaseDesk</p>",
+                          "emailMessage/Importance": "High"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Add_a_new_row_-_App_notification": [
+                      "Succeeded"
+                    ]
+                  },
+                  "expression": {
+                    "and": [
+                      {
+                        "not": {
+                          "equals": [
+                            "@empty(items('Apply_to_each_case')?['owninguser']?['internalemailaddress'])",
+                            true
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "4bd425f8-b1dd-5881-96f4-c3a782ed0e01"
+                  },
+                  "type": "If"
+                }
+              },
+              "runAfter": {},
+              "expression": {
+                "and": [
+                  {
+                    "not": {
+                      "equals": [
+                        "@empty(items('Apply_to_each_case')?['_owninguser_value'])",
+                        true
+                      ]
+                    }
+                  }
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "873ac6a3-1484-5bb3-b619-c215fd18e498"
+              },
+              "type": "If"
+            },
+            "Update_a_row_-_Warning_sent": {
+              "runAfter": {
+                "Condition_-_Owner_is_a_user": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "a445b32a-6fc1-54d6-8cc2-07f6ebdcff00"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "cd_cases",
+                  "recordId": "@items('Apply_to_each_case')?['cd_caseid']",
+                  "item/cd_slawarningsent": true
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "List_cases_entering_warning_window": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "eacc4519-16df-54a0-b88b-81e1da4726a9"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

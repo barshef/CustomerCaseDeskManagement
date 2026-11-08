@@ -1,0 +1,300 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cd_sharedcommondataserviceforapps"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "CaseDesk Sender Queue Email (cd_SenderQueueEmail)": {
+          "defaultValue": "",
+          "type": "String",
+          "metadata": {
+            "schemaName": "cd_SenderQueueEmail"
+          }
+        }
+      },
+      "triggers": {
+        "When_a_case_is_closed": {
+          "metadata": {
+            "operationMetadataId": "936a2c3b-e0fe-5cda-8fbc-4c6badadc74f"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "cd_case",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "statuscode",
+              "subscriptionRequest/filterexpression": "statuscode eq 2"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_case": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "976e4715-3bc2-5c91-a6ce-03babd5eb80a"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cd_cases",
+              "recordId": "@triggerOutputs()?['body/cd_caseid']",
+              "$select": "cd_caseid,cd_casenumber,cd_name,cd_duedate,cd_resolutionsummary,_cd_contactid_value"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_RequesterEmail": {
+          "runAfter": {
+            "Get_case": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3e6c9d1e-9a3a-5f83-b3f5-1f2913d80156"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "RequesterEmail",
+                "type": "string",
+                "value": ""
+              }
+            ]
+          }
+        },
+        "Condition_-_Requester_is_set": {
+          "actions": {
+            "Get_requester_contact": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "3b61dd7c-8f1e-5727-b9eb-69eb7c0ef0d0"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "contacts",
+                  "recordId": "@outputs('Get_case')?['body/_cd_contactid_value']",
+                  "$select": "contactid,fullname,emailaddress1"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Set_RequesterEmail": {
+              "runAfter": {
+                "Get_requester_contact": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "55ebab2e-39b2-519d-9182-c264267efed9"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "RequesterEmail",
+                "value": "@{coalesce(outputs('Get_requester_contact')?['body/emailaddress1'], '')}"
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_RequesterEmail": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "and": [
+              {
+                "not": {
+                  "equals": [
+                    "@empty(outputs('Get_case')?['body/_cd_contactid_value'])",
+                    true
+                  ]
+                }
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "8230b41f-7174-59a7-8875-23965bf32d0a"
+          },
+          "type": "If"
+        },
+        "Condition_-_Requester_has_email_address": {
+          "actions": {
+            "List_sender_queue": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "6a55027b-90d4-59fb-9d5e-3cff069f0758"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "queues",
+                  "$select": "queueid,name",
+                  "$filter": "emailaddress eq '@{parameters('CaseDesk Sender Queue Email (cd_SenderQueueEmail)')}'",
+                  "$top": 1
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Compose_from_party": {
+              "runAfter": {
+                "List_sender_queue": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "e9f39c24-d8fd-55e8-ad81-804bfea0e309"
+              },
+              "type": "Compose",
+              "inputs": "@if(empty(outputs('List_sender_queue')?['body/value']), addProperty(json('{\"participationtypemask\":1}'), 'partyid_systemuser@odata.bind', concat('systemusers(', triggerOutputs()?['body/_modifiedby_value'], ')')), addProperty(json('{\"participationtypemask\":1}'), 'partyid_queue@odata.bind', concat('queues(', first(outputs('List_sender_queue')?['body/value'])?['queueid'], ')')))"
+            },
+            "Add_a_new_row_-_Email": {
+              "runAfter": {
+                "Compose_from_party": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "31f7191c-b180-537b-9467-1874bb8bb50a"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "emails",
+                  "item/subject": "Case @{outputs('Get_case')?['body/cd_casenumber']} closed",
+                  "item/description": "<p>Hello @{outputs('Get_requester_contact')?['body/fullname']},</p><p>Your case <strong>@{outputs('Get_case')?['body/cd_casenumber']}</strong> (@{outputs('Get_case')?['body/cd_name']}) has been closed.</p><p><strong>Resolution</strong></p><p>@{outputs('Get_case')?['body/cd_resolutionsummary']}</p><p>If the issue is not resolved, reply to this email or contact us quoting the case number.</p><p>CaseDesk Support</p>",
+                  "item/directioncode": true,
+                  "item/regardingobjectid_cd_case_email@odata.bind": "cd_cases(@{outputs('Get_case')?['body/cd_caseid']})",
+                  "item/activitypointer_activity_parties": "@createArray(outputs('Compose_from_party'), addProperty(json('{\"participationtypemask\":2}'), 'partyid_contact@odata.bind', concat('contacts(', outputs('Get_case')?['body/_cd_contactid_value'], ')')))"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Perform_a_bound_action_-_SendEmail": {
+              "runAfter": {
+                "Add_a_new_row_-_Email": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "5238d436-e4ef-52cf-949b-4aae7432cfd5"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "PerformBoundAction",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "emails",
+                  "actionName": "Microsoft.Dynamics.CRM.SendEmail",
+                  "recordId": "@outputs('Add_a_new_row_-_Email')?['body/activityid']",
+                  "item/IssueSend": true
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Condition_-_Requester_is_set": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "and": [
+              {
+                "not": {
+                  "equals": [
+                    "@empty(variables('RequesterEmail'))",
+                    true
+                  ]
+                }
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "69e3762e-49fd-5adc-bddc-b45e53bf96f3"
+          },
+          "type": "If",
+          "else": {
+            "actions": {
+              "Add_internal_note_-_email_not_sent": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "755a0d69-2033-55d6-a67d-695dae8f1dca"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "CreateRecord",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "cd_casenotes",
+                    "item/cd_name": "Closure email not sent",
+                    "item/cd_notetext": "Closure email not sent: requester contact or email address missing.",
+                    "item/cd_notetype": 417200000,
+                    "item/cd_isopen": false,
+                    "item/cd_caseid@odata.bind": "cd_cases(@{outputs('Get_case')?['body/cd_caseid']})"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

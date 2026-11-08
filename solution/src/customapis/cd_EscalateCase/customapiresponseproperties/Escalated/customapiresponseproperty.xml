@@ -1,0 +1,11 @@
+<customapiresponseproperty uniquename="Escalated">
+  <description default="True if changes were made, false if the case was already escalated.">
+    <label description="True if changes were made, false if the case was already escalated." languagecode="1033" />
+  </description>
+  <displayname default="Escalated">
+    <label description="Escalated" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <name>cd_EscalateCase.Escalated</name>
+  <type>0</type>
+</customapiresponseproperty>

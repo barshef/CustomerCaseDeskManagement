@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AppModuleSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SiteMapUniqueName>cd_casedesk</SiteMapUniqueName>
+  <EnableCollapsibleGroups>False</EnableCollapsibleGroups>
+  <ShowHome>True</ShowHome>
+  <ShowPinned>True</ShowPinned>
+  <ShowRecents>True</ShowRecents>
+  <SiteMap IntroducedVersion="7.0.0.0">
+    <Area Id="cd_service" ShowGroups="true">
+      <Titles>
+        <Title LCID="1033" Title="Service" />
+      </Titles>
+      <Group Id="cd_dashboards" IsProfile="false" ToolTipResourseId="SitemapDesigner.Unknown">
+        <Titles>
+          <Title LCID="1033" Title="Dashboards" />
+        </Titles>
+        <SubArea Id="cd_agentdashboard" Url="/main.aspx?pagetype=dashboard&amp;id=%7b8aa5500f-cbb8-4067-8324-ca57cd98b69e%7d&amp;type=system" AvailableOffline="true" PassParams="false">
+          <Titles>
+            <Title LCID="1033" Title="Agent Dashboard" />
+          </Titles>
+        </SubArea>
+        <SubArea Id="cd_supervisordashboard" Url="/main.aspx?pagetype=dashboard&amp;id=%7b9ca3e552-20e0-4b98-bccb-1ebf8eea47bb%7d&amp;type=system" AvailableOffline="true" PassParams="false">
+          <Titles>
+            <Title LCID="1033" Title="Supervisor Dashboard" />
+          </Titles>
+        </SubArea>
+      </Group>
+      <Group Id="cd_cases" IsProfile="false" ToolTipResourseId="SitemapDesigner.Unknown">
+        <Titles>
+          <Title LCID="1033" Title="Cases" />
+        </Titles>
+        <SubArea Id="cd_casessub" Entity="cd_case" AvailableOffline="true" PassParams="false">
+          <Titles>
+            <Title LCID="1033" Title="Cases" />
+          </Titles>
+        </SubArea>
+        <SubArea Id="cd_casenotessub" Entity="cd_casenote" AvailableOffline="true" PassParams="false">
+          <Titles>
+            <Title LCID="1033" Title="Case Notes" />
+          </Titles>
+        </SubArea>
+        <SubArea Id="cd_refundapprovalssub" Entity="cd_refundapproval" AvailableOffline="true" PassParams="false">
+          <Titles>
+            <Title LCID="1033" Title="Refund Approvals" />
+          </Titles>
+        </SubArea>
+      </Group>
+      <Group Id="cd_customers" IsProfile="false" ToolTipResourseId="SitemapDesigner.Unknown">
+        <Titles>
+          <Title LCID="1033" Title="Customers" />
+        </Titles>
+        <SubArea Id="cd_accountssub" Entity="account" AvailableOffline="true" PassParams="false">
+          <Titles>
+            <Title LCID="1033" Title="Accounts" />
+          </Titles>
+        </SubArea>
+        <SubArea Id="cd_contactssub" Entity="contact" AvailableOffline="true" PassParams="false">
+          <Titles>
+            <Title LCID="1033" Title="Contacts" />
+          </Titles>
+        </SubArea>
+      </Group>
+    </Area>
+    <Area Id="cd_settings" ShowGroups="true">
+      <Titles>
+        <Title LCID="1033" Title="Settings" />
+      </Titles>
+      <Group Id="cd_sla" IsProfile="false" ToolTipResourseId="SitemapDesigner.Unknown">
+        <Titles>
+          <Title LCID="1033" Title="SLA" />
+        </Titles>
+        <SubArea Id="cd_slapoliciessub" Entity="cd_slapolicy" AvailableOffline="true" PassParams="false">
+          <Titles>
+            <Title LCID="1033" Title="SLA Policies" />
+          </Titles>
+        </SubArea>
+      </Group>
+    </Area>
+  </SiteMap>
+  <LocalizedNames>
+    <LocalizedName description="CaseDesk" languagecode="1033" />
+  </LocalizedNames>
+</AppModuleSiteMap>

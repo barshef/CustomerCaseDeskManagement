@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Workflow WorkflowId="{e6ec0dcb-7e5f-4e65-9b92-a31b781636dd}" Name="CaseDesk - Warning hours less than resolution hours" Description="Warning Hours must be less than Resolution Hours." xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <XamlFileName>/Workflows/CaseDesk-Warninghourslessthanresolutionhours-E6EC0DCB-7E5F-4E65-9B92-A31B781636DD.xaml</XamlFileName>
+  <Type>1</Type>
+  <Subprocess>0</Subprocess>
+  <Category>2</Category>
+  <Mode>1</Mode>
+  <Scope>4</Scope>
+  <OnDemand>0</OnDemand>
+  <TriggerOnCreate>0</TriggerOnCreate>
+  <TriggerOnDelete>0</TriggerOnDelete>
+  <AsyncAutodelete>0</AsyncAutodelete>
+  <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+  <StateCode>1</StateCode>
+  <StatusCode>2</StatusCode>
+  <RunAs>1</RunAs>
+  <IsTransacted>1</IsTransacted>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <BusinessProcessType>0</BusinessProcessType>
+  <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+  <ProcessTriggerScope>2</ProcessTriggerScope>
+  <ModernFlowType>0</ModernFlowType>
+  <PrimaryEntity>cd_slapolicy</PrimaryEntity>
+  <LocalizedNames>
+    <LocalizedName languagecode="1033" description="CaseDesk - Warning hours less than resolution hours" />
+  </LocalizedNames>
+  <Descriptions>
+    <Description languagecode="1033" description="Warning Hours must be less than Resolution Hours." />
+  </Descriptions>
+  <labels>
+    <steplabels id="{e051d271-62a6-4fe5-b258-8f9ce978df8c}">
+      <label languagecode="1033" description="Warning Hours must be less than Resolution Hours." />
+    </steplabels>
+  </labels>
+</Workflow>

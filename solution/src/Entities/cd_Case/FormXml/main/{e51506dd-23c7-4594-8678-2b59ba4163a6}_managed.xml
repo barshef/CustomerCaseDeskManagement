@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{e51506dd-23c7-4594-8678-2b59ba4163a6}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab name="general" id="{43929782-c81d-5fe1-be1e-070929d3923d}" expanded="true" showlabel="true" verticallayout="true">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+          <column width="50%">
+            <sections>
+                <section name="case_details" showlabel="true" showbar="false" columns="1" id="{534d1baa-e39a-5b5a-ae4e-a7a928b0964a}">
+                  <labels>
+                    <label description="Case" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{3ff415db-48be-5cc7-8b25-870ceb22a2cc}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Case Number" languagecode="1033" />
+                        </labels>
+                        <control id="cd_casenumber" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cd_casenumber" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{05227abd-0b20-547c-ba76-6a671661f5e1}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Title" languagecode="1033" />
+                        </labels>
+                        <control id="cd_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cd_name" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9bd1098f-6655-5761-9ba1-bbbb86722d5f}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Customer" languagecode="1033" />
+                        </labels>
+                        <control id="cd_accountid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cd_accountid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{471fdabd-fd17-5ecd-aedb-fc78587201de}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Requester" languagecode="1033" />
+                        </labels>
+                        <control id="cd_contactid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cd_contactid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c588bac9-ecea-5ef2-8583-43523faaf872}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Category" languagecode="1033" />
+                        </labels>
+                        <control id="cd_category" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="cd_category" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{53c85834-8321-5a91-a941-b4d707ca6ccc}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Priority" languagecode="1033" />
+                        </labels>
+                        <control id="cd_priority" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="cd_priority" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c8e3f3c4-5db5-547a-a1f3-50111277067d}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Refund Amount" languagecode="1033" />
+                        </labels>
+                        <control id="cd_refundamount" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="cd_refundamount" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d7a276bd-6216-56fb-8b1c-238d1d62cfc2}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Description" languagecode="1033" />
+                        </labels>
+                        <control id="cd_description" classid="{E0DECE4B-6FC8-4a8f-A065-082708572369}" datafieldname="cd_description" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="sla" showlabel="true" showbar="false" columns="1" id="{7c00364b-0c95-53ef-8277-cda6f3f66616}">
+                  <labels>
+                    <label description="SLA" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{21070e20-3c4c-50fb-818d-56d9a71dfcd5}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Due Date" languagecode="1033" />
+                        </labels>
+                        <control id="cd_duedate" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="cd_duedate" disabled="true" uniqueid="{0817c624-2c00-52af-a158-056e5cedef4d}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d4def3f3-95a8-5bb5-bb2a-e97ef99d7dce}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Warning On" languagecode="1033" />
+                        </labels>
+                        <control id="cd_warningon" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="cd_warningon" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{363e46ef-7956-5762-8e8d-bd80b63218c2}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="SLA Policy" languagecode="1033" />
+                        </labels>
+                        <control id="cd_slapolicyid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cd_slapolicyid" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e5f0b3a8-a533-5241-9fd9-86336915d0cd}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="SLA Warning Sent" languagecode="1033" />
+                        </labels>
+                        <control id="cd_slawarningsent" classid="{67FAC785-CD58-4f9f-ABB3-4B7DDC6ED5ED}" datafieldname="cd_slawarningsent" disabled="true" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="resolution" showlabel="true" showbar="false" columns="1" id="{fd6dfa13-f7ae-57aa-90ed-aafa7559a43f}">
+                  <labels>
+                    <label description="Resolution" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{16cc8ac4-5643-53c0-9494-970210366b3d}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Resolution Summary" languagecode="1033" />
+                        </labels>
+                        <control id="cd_resolutionsummary" classid="{E0DECE4B-6FC8-4a8f-A065-082708572369}" datafieldname="cd_resolutionsummary" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d79af003-10ba-53bf-b2fc-b2180fbe7b5a}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Resolved On" languagecode="1033" />
+                        </labels>
+                        <control id="cd_resolvedon" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="cd_resolvedon" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{26a3b693-fb5e-5a14-b535-c617f56c9676}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Closed On" languagecode="1033" />
+                        </labels>
+                        <control id="cd_closedon" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="cd_closedon" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e73ad0c2-6c2a-59af-9b1c-d850a183feb9}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Customer Reply Pending" languagecode="1033" />
+                        </labels>
+                        <control id="cd_customerreplypending" classid="{67FAC785-CD58-4f9f-ABB3-4B7DDC6ED5ED}" datafieldname="cd_customerreplypending" disabled="true" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+            </sections>
+          </column>
+          <column width="50%">
+            <sections>
+                <section name="timeline" showlabel="false" showbar="false" columns="1" id="{61978bc7-4c0f-5118-8f28-4daa7b9a4d99}">
+                  <labels>
+                    <label description="Timeline" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{baa24f0e-4234-51a6-b436-45a0f4d04642}" showlabel="false" rowspan="20" colspan="1" auto="false">
+                        <labels>
+                          <label description="Timeline" languagecode="1033" />
+                        </labels>
+                        <control id="notescontrol" classid="{06375649-c143-495e-a496-c962e5b4488e}" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+            </sections>
+          </column>
+          </columns>
+        </tab>
+        <tab name="notes_approvals" id="{f53045e0-477a-5f0c-8f33-daaf3f1d2fca}" expanded="true" showlabel="true" verticallayout="true">
+          <labels>
+            <label description="Notes and Approvals" languagecode="1033" />
+          </labels>
+          <columns>
+          <column width="100%">
+            <sections>
+                <section name="notes" showlabel="true" showbar="false" columns="1" id="{173e0fdf-ae91-5e6c-a780-6d6740550164}">
+                  <labels>
+                    <label description="Notes" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{2cf85906-f078-5bf8-8d10-cf369b64aec2}" showlabel="true" rowspan="11" colspan="1" auto="false">
+                        <labels>
+                          <label description="Notes" languagecode="1033" />
+                        </labels>
+                        <control id="CaseNotes" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <ViewId>{0236b36b-5554-48b8-903a-161253bba168}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>cd_case_cd_casenote</RelationshipName>
+                            <TargetEntityType>cd_casenote</TargetEntityType>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{0236b36b-5554-48b8-903a-161253bba168}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>Grid</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>false</EnableChartPicker>
+                            <RecordsPerPage>8</RecordsPerPage>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="refund_approvals" showlabel="true" showbar="false" columns="1" id="{015576ba-7217-5497-b7a2-38bc8737d6b7}">
+                  <labels>
+                    <label description="Refund Approvals" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{8bc5cec0-b7d3-5fea-a24e-e69919fc2d31}" showlabel="true" rowspan="8" colspan="1" auto="false">
+                        <labels>
+                          <label description="Refund Approvals" languagecode="1033" />
+                        </labels>
+                        <control id="RefundApprovals" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <ViewId>{657852d6-afc3-422e-a2a8-b7f4397863cf}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>cd_case_cd_refundapproval</RelationshipName>
+                            <TargetEntityType>cd_refundapproval</TargetEntityType>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{657852d6-afc3-422e-a2a8-b7f4397863cf}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>Grid</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>false</EnableChartPicker>
+                            <RecordsPerPage>5</RecordsPerPage>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+            </sections>
+          </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{1806de30-d665-5282-8dfe-907876a1660e}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+          <cell id="{69fc177d-22bd-5ba4-af48-c1644edb7d85}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Status Reason" languagecode="1033" />
+                        </labels>
+                        <control id="header_statuscode" classid="{5D68B988-0661-4db2-BC3E-17598AD3BE6C}" datafieldname="statuscode" disabled="false" />
+                      </cell>
+          <cell id="{d495a39c-78c8-5de7-a293-ec138cb4d0d1}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Priority" languagecode="1033" />
+                        </labels>
+                        <control id="header_cd_priority" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="cd_priority" disabled="false" />
+                      </cell>
+          <cell id="{f4c1fef5-fe8a-563d-847f-867cd04ef935}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false" />
+                      </cell>
+          </row>
+        </rows>
+      </header>
+      <controlDescriptions>
+        <controlDescription forControl="{0817c624-2c00-52af-a158-056e5cedef4d}">
+          <customControl id="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}">
+            <parameters>
+              <datafieldname>cd_duedate</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="cd_CaseDesk.SlaBadge">
+            <parameters>
+              <dueDate>cd_duedate</dueDate>
+              <warningOn>cd_warningon</warningOn>
+              <resolvedOn>cd_resolvedon</resolvedOn>
+              <closedOn>cd_closedon</closedOn>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="cd_CaseDesk.SlaBadge">
+            <parameters>
+              <dueDate>cd_duedate</dueDate>
+              <warningOn>cd_warningon</warningOn>
+              <resolvedOn>cd_resolvedon</resolvedOn>
+              <closedOn>cd_closedon</closedOn>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="cd_CaseDesk.SlaBadge">
+            <parameters>
+              <dueDate>cd_duedate</dueDate>
+              <warningOn>cd_warningon</warningOn>
+              <resolvedOn>cd_resolvedon</resolvedOn>
+              <closedOn>cd_closedon</closedOn>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Case" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Case main form" languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

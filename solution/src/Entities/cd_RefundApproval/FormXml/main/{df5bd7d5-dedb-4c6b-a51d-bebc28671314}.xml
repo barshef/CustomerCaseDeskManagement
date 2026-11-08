@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{df5bd7d5-dedb-4c6b-a51d-bebc28671314}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab name="general" id="{9e80066d-fd23-5512-acae-195a2d7d5826}" expanded="true" showlabel="true" verticallayout="true">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+          <column width="100%">
+            <sections>
+                <section name="approval" showlabel="true" showbar="false" columns="1" id="{c14d82ea-b56a-5dc4-a2ce-fb8c035d516a}">
+                  <labels>
+                    <label description="Refund Approval" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{35767da1-677d-5ef6-9416-eb80f5115f6a}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Name" languagecode="1033" />
+                        </labels>
+                        <control id="cd_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cd_name" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{31fb1911-39f7-5161-9a82-64b2d64988e3}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Case" languagecode="1033" />
+                        </labels>
+                        <control id="cd_caseid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cd_caseid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3bcab3cd-78ef-5d1a-87dd-b62146218e68}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Requested By" languagecode="1033" />
+                        </labels>
+                        <control id="cd_requestedbyid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cd_requestedbyid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6da21668-4bd4-5182-930f-9915eeeca71d}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Decision" languagecode="1033" />
+                        </labels>
+                        <control id="cd_decision" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="cd_decision" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7c227c09-8ac6-5b51-8e4f-1d3764e14a16}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Approver" languagecode="1033" />
+                        </labels>
+                        <control id="cd_approverid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cd_approverid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{be46d799-17b8-52c2-95ad-584f9c8bbbbe}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Decision Date" languagecode="1033" />
+                        </labels>
+                        <control id="cd_decisiondate" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="cd_decisiondate" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{97273ca0-b5c6-5e6d-a44f-a7a5498374ba}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Comment" languagecode="1033" />
+                        </labels>
+                        <control id="cd_comment" classid="{E0DECE4B-6FC8-4a8f-A065-082708572369}" datafieldname="cd_comment" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+            </sections>
+          </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Refund Approval" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Refund Approval main form" languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>
