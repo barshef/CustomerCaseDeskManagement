@@ -72,7 +72,7 @@ Each requirement names the extension point that implements it, so the finished s
 | FR11 | Resolved cases auto-close after 5 days with no customer reply | Power Automate scheduled flow | Time-based |
 | FR12 | Agent dashboard: my open cases by priority; Supervisor dashboard: team SLA breaches this week | Model-driven app dashboards with charts and views | Configuration |
 | FR13 | Agents can only see cases in their business unit; supervisors see all | Security roles and business units | Platform security, no code |
-| FR14 | All plugins have unit tests; solution deploys to a UAT environment on merge to main | xUnit + FakeXrmEasy; GitHub Actions with Power Platform actions | ALM is an explicit PL-400 topic and a partner interview topic |
+| FR14 | All plugins have unit tests; solution deploys to a UAT environment on merge to master | xUnit + FakeXrmEasy; GitHub Actions with Power Platform actions | ALM is an explicit PL-400 topic and a partner interview topic |
 | FR15 | The demo script runs end to end in a real browser as Agent, second-unit Agent and Supervisor, and is recorded as a captioned guide film (optionally voiced) for client demos and learning | Playwright (TypeScript) walkthroughs against the model-driven app, video recording, caption band + chapter cards, ffmpeg stitching, Azure speech for voice-over | Proves the whole solution works through the UI, not just in unit tests, and gives a repeatable demo film for interviews and AppSource screenshots |
 
 ## Integration
@@ -95,7 +95,8 @@ The only outbound integration is the CaseClosed event (FR10): a Dataverse webhoo
 
 - Environments: Dev (developer plan), UAT (second developer environment or trial).
 - Repo layout: `/solution` (unpacked), `/plugins` (C#), `/pcf`, `/functions` (Azure), `/tests`, `/e2e` (Playwright walkthroughs and films), `/docs`.
-- GitHub Actions: on push to `main` pack the solution, import to UAT as managed, run plugin tests first.
+- Branches: day-to-day work on `develop`; release by merging `develop` into `master`.
+- GitHub Actions: on push to `master` pack the solution, import to UAT as managed, run plugin tests first.
 
 **Acceptance criteria (demo script)**
 
@@ -107,7 +108,7 @@ The only outbound integration is the CaseClosed event (FR10): a Dataverse webhoo
 6. Click Escalate → priority Critical, owner changed, note added, all in one call (FR9).
 7. Close the case → external stub logs the CaseClosed payload within 1 minute (FR10).
 8. Agent in Business Unit A cannot open a case owned in Business Unit B; supervisor can (FR13).
-9. Merge a change to `main` → GitHub Actions deploys the managed solution to UAT and tests pass (FR14).
+9. Merge `develop` into `master` → GitHub Actions deploys the managed solution to UAT and tests pass (FR14).
 10. Run the walkthrough against Dev → steps 1–8 pass in a visible browser and a captioned film of them is produced, one chapter per step (FR15).
 
 **Decisions (8 Nov 2026)**

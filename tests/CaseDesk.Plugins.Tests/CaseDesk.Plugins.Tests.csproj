@@ -5,6 +5,9 @@
     <LangVersion>7.3</LangVersion>
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+    <!-- CS0618: FakeXrmEasy 1.x marks its own API obsolete to advertise v2/v3. Those need a
+         licence key (free only for OSS/non-commercial), and v1 fully covers these tests. -->
+    <NoWarn>$(NoWarn);CS0618</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

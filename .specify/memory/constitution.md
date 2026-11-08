@@ -1,6 +1,8 @@
 <!--
 Sync Impact Report
-- Version change: (template) → 1.0.0
+- Version change: 1.0.0 → 1.0.1 (PATCH: release branch renamed `main` → `master`; work happens on
+  `develop`. No principle changed.)
+- Earlier: (template) → 1.0.0
 - Principles defined: I. Simplest Extension Point Wins; II. Server-Side Rules Are Authoritative;
   III. Fast, Idempotent, Traceable Plugins; IV. Test-First for Code Components;
   V. Secrets Never in Source; VI. One Solution, Managed Downstream
@@ -93,7 +95,8 @@ MUST receive the managed solution only, deployed by pipeline; no manual customis
 
 - Work proceeds through the Spec Kit flow: specify → clarify → plan → tasks → implement.
 - Every plan MUST include a Constitution Check against Principles I–VI.
-- GitHub Actions on push to `main`: build and test plugins → pack solution (managed) → import
+- Work happens on `develop`; releases merge `develop` into `master`.
+- GitHub Actions on push to `master`: build and test plugins → pack solution (managed) → import
   to UAT. Pull requests run build and tests only.
 - A requirement is done when its acceptance step from the demo script passes in Dev, and the
   change is in the unpacked solution in source control.
@@ -106,4 +109,4 @@ Versioning: MAJOR for removed or redefined principles, MINOR for new principles 
 PATCH for wording. Every plan and code review MUST check compliance; any deviation MUST be
 recorded in the plan's Complexity Tracking table with its justification.
 
-**Version**: 1.0.0 | **Ratified**: 2026-11-08 | **Last Amended**: 2026-11-08
+**Version**: 1.0.1 | **Ratified**: 2026-11-08 | **Last Amended**: 2026-11-08

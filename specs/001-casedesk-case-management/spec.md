@@ -272,7 +272,7 @@ Business Unit B cannot be opened; log in as a supervisor and confirm it can.
 
 ### User Story 10 - Repeatable deployment and demo data (Priority: P3)
 
-When a change is merged to the main branch, automated tests run and, if they pass, the solution
+When a change is merged to the `master` branch, automated tests run and, if they pass, the solution
 is deployed to the UAT environment as a managed solution. Demo data (accounts, contacts, SLA
 policies, sample cases) can be loaded into an environment with one command.
 
@@ -284,7 +284,7 @@ the managed solution into UAT.
 
 **Acceptance Scenarios**:
 
-1. **Given** a merge to main, **When** tests pass, **Then** the managed solution is imported into
+1. **Given** a merge to `master`, **When** tests pass, **Then** the managed solution is imported into
    UAT without manual steps.
 2. **Given** a failing test, **Then** nothing is deployed and the pipeline reports the failure.
 3. **Given** an empty environment with the solution installed, **When** the seeding command runs,
@@ -424,7 +424,7 @@ step is written to the films folder.
 
 **Quality and delivery**
 
-- **FR-014**: All server-side business logic MUST have automated tests, and every merge to main
+- **FR-014**: All server-side business logic MUST have automated tests, and every merge to `master`
   MUST run them and, on success, deploy the managed solution to UAT.
 - **FR-015**: System MUST provide a repeatable, idempotent way to load demo data (SLA policies,
   customers, cases) into an environment.
@@ -471,7 +471,7 @@ step is written to the films folder.
 - **SC-006**: Saving a case takes under 2 seconds as perceived by the agent, with 50 agents
   working concurrently and 10,000 open cases.
 - **SC-007**: All 9 steps of the BRD demo script pass in UAT end to end.
-- **SC-008**: A merge to main reaches UAT with no manual steps in under 20 minutes.
+- **SC-008**: A merge to `master` reaches UAT with no manual steps in under 20 minutes.
 - **SC-009**: The browser walkthrough passes all 8 chapters in Dev, and a complete guide film
   (one chapter per step) is produced from a single command.
 

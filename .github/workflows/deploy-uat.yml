@@ -48,10 +48,10 @@ jobs:
     environment: uat
     steps:
       - name: Checkout (for the deployment settings file)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Download solution artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: solution
           path: out/solution
