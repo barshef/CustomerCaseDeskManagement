@@ -1,0 +1,30 @@
+# Claude Code local/private settings (skills under .claude/skills are committed)
+.claude/settings.local.json
+.claude/*.local.*
+
+# .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+TestResults/
+*.snk
+
+# Node / PCF
+node_modules/
+out/
+generated/
+
+# Azure Functions
+local.settings.json
+.azurite/
+__azurite_db*
+
+# Power Platform packing output
+/artifacts/
+*.zip
+
+# Secrets
+.env
+*.pfx
