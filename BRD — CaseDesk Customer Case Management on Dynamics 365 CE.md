@@ -6,8 +6,6 @@
 
 CaseDesk lets a small service team log, assign, work and close customer cases against an SLA, with the customer notified at each step and an external system told when a case closes. It is built on Dynamics 365 CE / Dataverse so that every Power Platform extension point a hiring manager asks about (plugin, flow, business rule, custom API, PCF, Azure integration, ALM) is exercised once, for a real reason.
 
-**Owner:** your limited company, as an internal product used for client demos. **Build window:** 10 Nov – 7 Dec 2026. **Repo:** public GitHub, managed solution plus source.
-
 **In scope**
 
 - Cases raised by agents on behalf of customers (Account/Contact), categorised, prioritised and assigned.
@@ -114,5 +112,5 @@ The only outbound integration is the CaseClosed event (FR10): a Dataverse webhoo
 **Decisions**
 
 - FR6 uses the standard Email table and server-side synchronisation first, so emails appear on the case timeline and the solution shows the native pattern; swapping to a plain Office 365 Outlook connector action is a later simplification if mailbox setup proves awkward in the developer environment.
-- FR15 (added 8 Nov 2026): Playwright walkthroughs and guide films follow the Rotaro/Moniqora pattern — runs are always headed (visible), captions at the top, chapter cards, films committed under `e2e/demo-out/`, voice-over via Azure speech using the PC's `DEMO_SPEECH_KEY`/`DEMO_SPEECH_REGION`, made on demand on the PC (not in the pipeline). Needs a deployed Dev environment and demo users per persona.
+- FR15 : Playwright walkthroughs and guide films follow the Rotaro/Moniqora pattern — runs are always headed (visible), captions at the top, chapter cards, films committed under `e2e/demo-out/`, voice-over via Azure speech using the PC's `DEMO_SPEECH_KEY`/`DEMO_SPEECH_REGION`, made on demand on the PC (not in the pipeline). Needs a deployed Dev environment and demo users per persona.
 - After v1 is accepted, publish CaseDesk to AppSource as a free app under your limited company for visibility. This needs a Partner Center account, the managed solution packaged with `pac package`, and a listing (description, screenshots, support contact); allow a week for certification.
