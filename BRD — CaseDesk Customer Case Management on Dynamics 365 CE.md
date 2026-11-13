@@ -1,6 +1,6 @@
 # BRD — CaseDesk: Customer Case Management on Dynamics 365 CE
 
-Nov 8, 2026 · @Barshef
+2026 · @Barshef
 
 ## Purpose and scope
 
@@ -111,7 +111,7 @@ The only outbound integration is the CaseClosed event (FR10): a Dataverse webhoo
 9. Merge `develop` into `master` → GitHub Actions deploys the managed solution to UAT and tests pass (FR14).
 10. Run the walkthrough against Dev → steps 1–8 pass in a visible browser and a captioned film of them is produced, one chapter per step (FR15).
 
-**Decisions (8 Nov 2026)**
+**Decisions**
 
 - FR6 uses the standard Email table and server-side synchronisation first, so emails appear on the case timeline and the solution shows the native pattern; swapping to a plain Office 365 Outlook connector action is a later simplification if mailbox setup proves awkward in the developer environment.
 - FR15 (added 8 Nov 2026): Playwright walkthroughs and guide films follow the Rotaro/Moniqora pattern — runs are always headed (visible), captions at the top, chapter cards, films committed under `e2e/demo-out/`, voice-over via Azure speech using the PC's `DEMO_SPEECH_KEY`/`DEMO_SPEECH_REGION`, made on demand on the PC (not in the pipeline). Needs a deployed Dev environment and demo users per persona.
