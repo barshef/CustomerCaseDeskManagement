@@ -71,7 +71,7 @@ Each requirement names the extension point that implements it, so the finished s
 | FR12 | Agent dashboard: my open cases by priority; Supervisor dashboard: team SLA breaches this week | Model-driven app dashboards with charts and views | Configuration |
 | FR13 | Agents can only see cases in their business unit; supervisors see all | Security roles and business units | Platform security, no code |
 | FR14 | All plugins have unit tests; solution deploys to a UAT environment on merge to master | xUnit + FakeXrmEasy; GitHub Actions with Power Platform actions | ALM is an explicit PL-400 topic and the main safeguard for server logic |
-| FR15 | The demo script runs end to end in a real browser as Agent, second-unit Agent and Supervisor, and is recorded as a captioned guide film (optionally voiced) for client demos and learning | Playwright (TypeScript) walkthroughs against the model-driven app, video recording, caption band + chapter cards, ffmpeg stitching, Azure speech for voice-over | Proves the whole solution works through the UI, not just in unit tests, and gives a repeatable demo film for interviews and AppSource screenshots |
+| FR15 | The demo script runs end to end in a real browser as Agent, second-unit Agent and Supervisor, and is recorded as a captioned guide film (optionally voiced) for client demos and learning | Playwright (TypeScript) walkthroughs against the model-driven app, video recording, caption band + chapter cards, ffmpeg stitching, Azure speech for voice-over | Proves the whole solution works through the UI, not just in unit tests, and gives a repeatable demo film for client demos and AppSource screenshots |
 
 ## Integration
 

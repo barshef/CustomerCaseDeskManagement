@@ -29,5 +29,5 @@ __azurite_db*
 .env
 *.pfx
 
-# Private notes: interview preparation and personal planning. Kept on this PC only, never pushed.
+# Private working notes. Kept on this PC only, never pushed.
 docs/private/
