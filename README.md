@@ -4,7 +4,7 @@ CaseDesk lets a small service team log, assign, work and close customer cases ag
 The customer is emailed at each step, and an external system is told when a case closes. It
 runs on a custom `cd_case` table, so no Dynamics 365 Customer Service licence is needed.
 
-It uses every Power Platform extension point a PL-400 interviewer asks about, each for a real
+It uses every main Power Platform extension point (the PL-400 developer topics), each for a real
 reason: auto-number, business rules, cloud flows and approvals, C# plugins, a plugin-backed
 Custom API with a ribbon button, a PCF React control, Azure Functions over **Service Bus or
 webhook** (switchable by an environment variable), security roles and business units, and
@@ -15,7 +15,7 @@ GitHub Actions ALM.
 - Business requirements: [BRD](./BRD%20—%20CaseDesk%20Customer%20Case%20Management%20on%20Dynamics%20365%20CE.md)
 - Design (spec-kit): [`specs/001-casedesk-case-management`](specs/001-casedesk-case-management/spec.md)
 - Architecture: [docs/architecture.md](docs/architecture.md) · Why each extension point:
-  [docs/interview-notes.md](docs/interview-notes.md) · ALM: [docs/alm.md](docs/alm.md)
+  [docs/design-decisions.md](docs/design-decisions.md) · ALM: [docs/alm.md](docs/alm.md)
 
 ## Repository layout
 
@@ -28,7 +28,7 @@ GitHub Actions ALM.
 | `tests/` | `CaseDesk.Plugins.Tests` (xUnit + FakeXrmEasy, net462), `CaseDesk.Functions.Tests` (xUnit, net8) |
 | `tools/` | `CaseDesk.Seeder`: .NET 8 console app for idempotent demo data, business units and the supervisor team ([README](tools/CaseDesk.Seeder/README.md)) |
 | `e2e/` | Playwright walkthroughs of demo steps 1–8 (always headed) and guide films; films in `e2e/demo-out/` |
-| `docs/` | Architecture, interview notes, ALM, toolchain, endpoint registration, business rules, walkthrough films |
+| `docs/` | Architecture, design decisions, ALM, toolchain, endpoint registration, business rules, walkthrough films |
 | `specs/` | Spec-kit feature folder: spec, plan, research, data model, contracts, tasks, quickstart |
 | `.specify/` | Spec-kit memory (`constitution.md`) and templates |
 | `.github/workflows/` | `ci.yml` (build, test, pack) and `deploy-uat.yml` (managed import to UAT) |

@@ -225,7 +225,7 @@ e2e/demo-out/casedesk-demo.mp4.
 
 ## Phase 14: Polish & Cross-Cutting Concerns
 
-- [X] T063 [P] docs/architecture.md (component diagram, sequence for CaseClosed both transports) and docs/interview-notes.md (why each extension point)
+- [X] T063 [P] docs/architecture.md (component diagram, sequence for CaseClosed both transports) and docs/design-decisions.md (why each extension point)
 - [X] T064 Run full local build: `dotnet test` (plugins, functions), `npm test` + `npm run build` (PCF), `dotnet build solution/CaseDesk.cdsproj` (pack)
 - [X] T065 Security pass: grep for secrets, confirm local.settings.json ignored, deployment settings placeholders only
 - [X] T066 Update quickstart.md with any deviations found during implementation

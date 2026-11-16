@@ -1,4 +1,4 @@
-# Interview notes: why each extension point
+# Design decisions: why each extension point
 
 For each BRD requirement: what implements it, the short "why" answer, and the alternative
 that was rejected and the reason. The order of preference comes from constitution I: platform
@@ -143,7 +143,7 @@ config → declarative → low-code → pro-code. Pro-code needs a reason that l
   Actions `ci.yml` runs all tests and then packs the solution. `deploy-uat.yml` on push to master
   calls CI as a reusable workflow, then imports the **managed** zip to UAT with
   `microsoft/powerplatform-actions`, using a GitHub `uat` environment for approvals.
-- **Why**: ALM is an explicit PL-400 topic. Tests run before packing, so a red test blocks
+- **Why**: Tests run before packing, so a red test blocks
   deployment. Managed downstream means UAT is never hand-edited.
 - **Alternative**: Power Platform Pipelines (in-product, simple, but less control over tests
   and code builds) or Azure DevOps (same capability; GitHub fits a public repo).
@@ -160,7 +160,7 @@ config → declarative → low-code → pro-code. Pro-code needs a reason that l
   model-driven apps) or Power Apps Test Engine (strong for canvas apps, weaker for model-driven
   forms); neither produces captioned films.
 
-## Two-transport learning notes (Service Bus vs webhook)
+## Service Bus vs webhook: the two transports compared
 
 | | Service Bus (default) | Webhook (alternative) |
 | --- | --- | --- |
@@ -174,7 +174,7 @@ config → declarative → low-code → pro-code. Pro-code needs a reason that l
 | Payload | `RemoteExecutionContext` JSON in the message body | Same `RemoteExecutionContext` JSON in the POST body |
 | Best when | Receiver may be offline, you want buffering, replay and dead-letter | Simple, low volume, receiver always up, fewest moving parts |
 
-Things worth saying in an interview:
+Key points:
 
 - **One switch, one handler.** `cd_CaseClosedTransport` picks the endpoint at run time. Both
   Functions call the same `CaseClosedHandler`, so only the transport differs and the mapping is

@@ -53,7 +53,7 @@ Solid arrows are agent actions; the dashed arrow is Cancel, allowed from any sta
 
 ## Functional requirements
 
-Each requirement names the extension point that implements it, so the finished solution demonstrates every one a PL-400 syllabus or interviewer expects. Pick the simplest tool that works; the "why" column is the interview answer.
+Each requirement names the extension point that implements it, so the finished solution uses every extension point in the PL-400 developer syllabus. Pick the simplest tool that works; the "why" column records the reason.
 
 | # | Requirement | Implemented with | Why this extension point |
 | --- | --- | --- | --- |
@@ -70,7 +70,7 @@ Each requirement names the extension point that implements it, so the finished s
 | FR11 | Resolved cases auto-close after 5 days with no customer reply | Power Automate scheduled flow | Time-based |
 | FR12 | Agent dashboard: my open cases by priority; Supervisor dashboard: team SLA breaches this week | Model-driven app dashboards with charts and views | Configuration |
 | FR13 | Agents can only see cases in their business unit; supervisors see all | Security roles and business units | Platform security, no code |
-| FR14 | All plugins have unit tests; solution deploys to a UAT environment on merge to master | xUnit + FakeXrmEasy; GitHub Actions with Power Platform actions | ALM is an explicit PL-400 topic and a partner interview topic |
+| FR14 | All plugins have unit tests; solution deploys to a UAT environment on merge to master | xUnit + FakeXrmEasy; GitHub Actions with Power Platform actions | ALM is an explicit PL-400 topic and the main safeguard for server logic |
 | FR15 | The demo script runs end to end in a real browser as Agent, second-unit Agent and Supervisor, and is recorded as a captioned guide film (optionally voiced) for client demos and learning | Playwright (TypeScript) walkthroughs against the model-driven app, video recording, caption band + chapter cards, ffmpeg stitching, Azure speech for voice-over | Proves the whole solution works through the UI, not just in unit tests, and gives a repeatable demo film for interviews and AppSource screenshots |
 
 ## Integration

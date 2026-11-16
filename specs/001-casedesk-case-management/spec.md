@@ -300,7 +300,7 @@ real agent, an agent in another business unit and a supervisor would use it: eac
 step is performed through the app's screens, with a caption at the top of the screen saying
 what is happening. The run is recorded and turned into a guide film — a title card, one
 chapter per step with its own chapter card, and optionally a spoken voice-over — that can be
-shown to clients, used for interviews and reused for listing screenshots.
+shown to clients and reused for listing screenshots.
 
 **Why this priority**: Proves the whole product works through the user interface, not only in
 unit tests, and gives a repeatable demo; depends on a deployed environment, so it comes last.

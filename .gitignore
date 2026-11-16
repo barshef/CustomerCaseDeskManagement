@@ -28,3 +28,6 @@ __azurite_db*
 # Secrets
 .env
 *.pfx
+
+# Private notes: interview preparation and personal planning. Kept on this PC only, never pushed.
+docs/private/

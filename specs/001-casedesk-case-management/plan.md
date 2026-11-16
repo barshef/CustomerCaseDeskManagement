@@ -127,7 +127,7 @@ e2e/                              # Playwright walkthroughs (headed) + guide fil
 ├── chapters/01-log-case.spec.ts … 08-business-unit-access.spec.ts
 ├── scripts/ (login.mjs, stitch.mjs, speech.mjs, publish.mjs)
 └── demo-out/                     # committed films
-docs/                             # architecture.md, interview-notes.md (why each extension point)
+docs/                             # architecture.md, design-decisions.md (why each extension point)
 .github/workflows/ci.yml, deploy-uat.yml
 ```
 

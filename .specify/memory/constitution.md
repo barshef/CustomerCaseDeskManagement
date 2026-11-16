@@ -1,6 +1,7 @@
 <!--
 Sync Impact Report
-- Version change: 1.0.0 → 1.0.1 (PATCH: release branch renamed `main` → `master`; work happens on
+- Version change: 1.0.1 → 1.0.2 (PATCH: wording of the Principle IV rationale. No principle changed.)
+- Earlier: 1.0.0 → 1.0.1 (PATCH: release branch renamed `main` → `master`; work happens on
   `develop`. No principle changed.)
 - Earlier: (template) → 1.0.0
 - Principles defined: I. Simplest Extension Point Wins; II. Server-Side Rules Are Authoritative;
@@ -57,7 +58,7 @@ alongside the implementation, covering the happy path and each rule violation. P
 computes state (e.g. SLA colour) MUST be unit tested. CI MUST run tests before packing or
 deploying; a failing test blocks deployment.
 
-*Rationale*: ALM and testability are explicit PL-400 and interview topics and the main risk
+*Rationale*: ALM and testability are explicit PL-400 topics and the main risk
 reducer for server logic.
 
 ### V. Secrets Never in Source
@@ -109,4 +110,4 @@ Versioning: MAJOR for removed or redefined principles, MINOR for new principles 
 PATCH for wording. Every plan and code review MUST check compliance; any deviation MUST be
 recorded in the plan's Complexity Tracking table with its justification.
 
-**Version**: 1.0.1 | **Ratified**: 2026-11-08 | **Last Amended**: 2026-11-08
+**Version**: 1.0.2 | **Ratified**: 2026-11-08 | **Last Amended**: 2026-11-16

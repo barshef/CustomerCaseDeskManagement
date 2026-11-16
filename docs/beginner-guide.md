@@ -77,7 +77,7 @@ Agent closes the case
 
 The rule of thumb used everywhere: **if it must always be true, it lives on the server**
 (plugin or table-level business rule). Forms and flows are for convenience and
-notifications. [interview-notes.md](interview-notes.md) explains every choice in this style.
+notifications. [design-decisions.md](design-decisions.md) explains every choice in this style.
 
 ### Which folder becomes what in Dynamics
 
@@ -367,7 +367,7 @@ You need an Azure subscription, the **Azure CLI** (`az`) and **Azure Functions C
 4. **The learning exercise:** set environment variable **CaseDesk CaseClosed Transport** to
    `Webhook`, close another case, and watch it arrive the other way. Compare the two in
    Application Insights (`traces | where message has "CaseClosed"`). The table at the end of
-   [interview-notes.md](interview-notes.md) lists the trade-offs.
+   [design-decisions.md](design-decisions.md) lists the trade-offs.
 
 ---
 
