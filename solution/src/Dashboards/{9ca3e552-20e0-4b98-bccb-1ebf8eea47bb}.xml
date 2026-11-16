@@ -27,6 +27,9 @@
                     <rows>
                       <row>
                         <cell id="{88382af8-e322-5661-b62a-97b6f1de257f}" showlabel="false" colspan="1" auto="false" rowspan="12">
+                          <labels>
+                            <label description="Cases" languagecode="1033" />
+                          </labels>
                           <control id="BreachesByOwner" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{a5038133-2c96-5b44-8e78-e8eaa2b33636}">
                             <parameters>
                               <ViewId>{bc023c42-94e7-40ad-b4c9-454f2bf3b61e}</ViewId>
@@ -47,6 +50,9 @@
                           </control>
                         </cell>
                         <cell id="{0d272181-a9b0-532d-a08e-e69362999d0d}" showlabel="false" colspan="1" auto="false" rowspan="12">
+                          <labels>
+                            <label description="Cases" languagecode="1033" />
+                          </labels>
                           <control id="BreachesByPriority" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{64e09f41-a820-5a1f-a6c5-516a252be63e}">
                             <parameters>
                               <ViewId>{bc023c42-94e7-40ad-b4c9-454f2bf3b61e}</ViewId>
@@ -67,6 +73,9 @@
                           </control>
                         </cell>
                         <cell id="{87fc08cc-3e3a-563e-978b-14efb35ea166}" showlabel="false" colspan="1" auto="false" rowspan="12">
+                          <labels>
+                            <label description="Cases" languagecode="1033" />
+                          </labels>
                           <control id="BreachedCases" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{1792e218-7c4a-527f-b269-5a9c4a6c0c31}">
                             <parameters>
                               <ViewId>{bc023c42-94e7-40ad-b4c9-454f2bf3b61e}</ViewId>

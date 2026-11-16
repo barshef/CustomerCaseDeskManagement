@@ -18,7 +18,7 @@
     <ReferencingAttributeName>cd_AccountId</ReferencingAttributeName>
     <RelationshipDescription>
       <Descriptions>
-        <Description description="Customer of the case" languagecode="1033" />
+        <Description description="Customer account the case is logged for." languagecode="1033" />
       </Descriptions>
     </RelationshipDescription>
     <EntityRelationshipRoles>

@@ -12,8 +12,8 @@
             <label description="General" languagecode="1033" />
           </labels>
           <columns>
-          <column width="100%">
-            <sections>
+            <column width="100%">
+              <sections>
                 <section name="note" showlabel="true" showbar="false" columns="1" id="{e45e955a-9f63-5929-afc2-b3deaa6e1ef6}">
                   <labels>
                     <label description="Note" languagecode="1033" />
@@ -84,8 +84,8 @@
                     </row>
                   </rows>
                 </section>
-            </sections>
-          </column>
+              </sections>
+            </column>
           </columns>
         </tab>
       </tabs>

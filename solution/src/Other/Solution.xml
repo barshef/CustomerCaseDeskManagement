@@ -1,35 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.1.0.643" SolutionPackageVersion="9.1" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.26111.138" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26111.138" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26111.00138">
   <SolutionManifest>
-    <!-- Unique Name of Cds Solution-->
     <UniqueName>CaseDesk</UniqueName>
     <LocalizedNames>
-      <!-- Localized Solution Name in language code -->
       <LocalizedName description="CaseDesk" languagecode="1033" />
     </LocalizedNames>
-    <Descriptions><Description description="CaseDesk customer case management (custom Case table on Dataverse)." languagecode="1033" /></Descriptions>
+    <Descriptions>
+      <Description description="CaseDesk customer case management (custom Case table on Dataverse)." languagecode="1033" />
+    </Descriptions>
     <Version>1.0</Version>
-    <!-- Solution Package Type: Unmanaged(0)/Managed(1)/Both(2)-->
     <Managed>2</Managed>
     <Publisher>
-      <!-- Unique Publisher Name of Cds Solution -->
       <UniqueName>CaseDesk</UniqueName>
       <LocalizedNames>
-        <!-- Localized Cds Publisher Name in language code-->
         <LocalizedName description="CaseDesk" languagecode="1033" />
       </LocalizedNames>
       <Descriptions>
-        <!-- Description of Cds Publisher in language code -->
         <Description description="CaseDesk" languagecode="1033" />
       </Descriptions>
       <EMailAddress xsi:nil="true"></EMailAddress>
       <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
-      <!-- Customization Prefix for the Cds Publisher-->
       <CustomizationPrefix>cd</CustomizationPrefix>
-      <!-- Derived Option Value Prefix for the Customization Prefix of Cds Publisher -->
       <CustomizationOptionValuePrefix>41720</CustomizationOptionValuePrefix>
       <Addresses>
-        <!-- Address of the Publisher-->
         <Address>
           <AddressNumber>1</AddressNumber>
           <AddressTypeCode>1</AddressTypeCode>
@@ -93,10 +86,6 @@
       <RootComponent type="1" schemaName="cd_casenote" behavior="0" />
       <RootComponent type="1" schemaName="cd_refundapproval" behavior="0" />
       <RootComponent type="1" schemaName="cd_slapolicy" behavior="0" />
-      <RootComponent type="9" schemaName="cd_casecategory" behavior="0" />
-      <RootComponent type="9" schemaName="cd_casepriority" behavior="0" />
-      <RootComponent type="9" schemaName="cd_notetype" behavior="0" />
-      <RootComponent type="9" schemaName="cd_refunddecision" behavior="0" />
       <RootComponent type="20" id="{399d12be-2523-4d4f-bd1f-6c2dbcffe58a}" behavior="0" />
       <RootComponent type="20" id="{d03910ad-e39d-4d0a-8162-a068b4d7e861}" behavior="0" />
       <RootComponent type="29" id="{0d5c103e-da07-41ca-8f5a-c594a48acdb9}" behavior="0" />
@@ -113,12 +102,36 @@
       <RootComponent type="61" schemaName="cd_/html/escalate.html" behavior="0" />
       <RootComponent type="61" schemaName="cd_/scripts/case.ribbon.js" behavior="0" />
       <RootComponent type="62" schemaName="cd_casedesk" behavior="0" />
+      <RootComponent type="66" schemaName="cd_CaseDesk.SlaBadge" behavior="0" />
       <RootComponent type="80" schemaName="cd_casedesk" behavior="0" />
+      <RootComponent type="9" schemaName="cd_casecategory" behavior="0" />
+      <RootComponent type="9" schemaName="cd_casepriority" behavior="0" />
+      <RootComponent type="9" schemaName="cd_notetype" behavior="0" />
+      <RootComponent type="9" schemaName="cd_refunddecision" behavior="0" />
       <RootComponent type="91" id="{d27c16a9-0827-40ce-b313-82aa98778c6c}" schemaName="CaseDesk.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4084e1bede633e50" behavior="0" />
       <RootComponent type="92" id="{06cc5c65-bc6a-470e-a197-425bc6fd2263}" behavior="0" />
       <RootComponent type="92" id="{1eacde87-49d9-4c58-8667-9ccf8ec7ba45}" behavior="0" />
       <RootComponent type="92" id="{d802fe6b-7e54-42b2-bfe3-b864b4ad461f}" behavior="0" />
     </RootComponents>
-    <MissingDependencies />
+    <MissingDependencies>
+      <MissingDependency>
+        <Required type="1" schemaName="appnotification" displayName="Notification" solution="AppNotifications (10.0.0.17)">
+          <package appName="PowerAppsUnifiedClientExtensionApp Package" version="1.0.0.103">PowerAppsUnifiedClientExtensionApp_Anchor (1.0.0.103)</package>
+        </Required>
+        <Dependent type="29" displayName="CaseDesk - Auto-close resolved cases" id="{3d7672ff-7cc2-4aec-bbc1-f7316c3d2c03}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="appnotification" displayName="Notification" solution="AppNotifications (10.0.0.17)">
+          <package appName="PowerAppsUnifiedClientExtensionApp Package" version="1.0.0.103">PowerAppsUnifiedClientExtensionApp_Anchor (1.0.0.103)</package>
+        </Required>
+        <Dependent type="29" displayName="CaseDesk - SLA warning" id="{7fd0397c-9a22-4c58-b4af-6709a1dbdf6a}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="msdyn_/Images/AppModule_Default_Icon.png" displayName="msdyn_/Images/AppModule_Default_Icon.png" solution="AppModuleWebResources (2.5)">
+          <package appName="AppModule Web Resources Package" version="2.5">AppModuleWebResources (2.5)</package>
+        </Required>
+        <Dependent type="80" schemaName="cd_casedesk" displayName="CaseDesk" />
+      </MissingDependency>
+    </MissingDependencies>
   </SolutionManifest>
 </ImportExportXml>

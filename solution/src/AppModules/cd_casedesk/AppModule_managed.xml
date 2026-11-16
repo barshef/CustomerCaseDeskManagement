@@ -16,8 +16,8 @@
     <AppModuleComponent type="1" schemaName="cd_refundapproval" />
     <AppModuleComponent type="1" schemaName="cd_slapolicy" />
     <AppModuleComponent type="1" schemaName="contact" />
-    <AppModuleComponent type="60" id="{8aa5500f-cbb8-4067-8324-ca57cd98b69e}" />
     <AppModuleComponent type="60" id="{9ca3e552-20e0-4b98-bccb-1ebf8eea47bb}" />
+    <AppModuleComponent type="60" id="{8aa5500f-cbb8-4067-8324-ca57cd98b69e}" />
     <AppModuleComponent type="62" schemaName="cd_casedesk" />
   </AppModuleComponents>
   <AppModuleRoleMaps>

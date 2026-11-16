@@ -12,8 +12,8 @@
             <label description="General" languagecode="1033" />
           </labels>
           <columns>
-          <column width="100%">
-            <sections>
+            <column width="100%">
+              <sections>
                 <section name="policy" showlabel="true" showbar="false" columns="1" id="{471e09d4-6f38-529b-9fec-4cb86bfa8bb0}">
                   <labels>
                     <label description="SLA Policy" languagecode="1033" />
@@ -53,8 +53,8 @@
                     </row>
                   </rows>
                 </section>
-            </sections>
-          </column>
+              </sections>
+            </column>
           </columns>
         </tab>
       </tabs>

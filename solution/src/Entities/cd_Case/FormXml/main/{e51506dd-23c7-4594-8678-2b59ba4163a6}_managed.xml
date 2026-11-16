@@ -12,8 +12,8 @@
             <label description="General" languagecode="1033" />
           </labels>
           <columns>
-          <column width="50%">
-            <sections>
+            <column width="50%">
+              <sections>
                 <section name="case_details" showlabel="true" showbar="false" columns="1" id="{534d1baa-e39a-5b5a-ae4e-a7a928b0964a}">
                   <labels>
                     <label description="Case" languagecode="1033" />
@@ -163,10 +163,10 @@
                     </row>
                   </rows>
                 </section>
-            </sections>
-          </column>
-          <column width="50%">
-            <sections>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
                 <section name="timeline" showlabel="false" showbar="false" columns="1" id="{61978bc7-4c0f-5118-8f28-4daa7b9a4d99}">
                   <labels>
                     <label description="Timeline" languagecode="1033" />
@@ -182,8 +182,8 @@
                     </row>
                   </rows>
                 </section>
-            </sections>
-          </column>
+              </sections>
+            </column>
           </columns>
         </tab>
         <tab name="notes_approvals" id="{f53045e0-477a-5f0c-8f33-daaf3f1d2fca}" expanded="true" showlabel="true" verticallayout="true">
@@ -191,8 +191,8 @@
             <label description="Notes and Approvals" languagecode="1033" />
           </labels>
           <columns>
-          <column width="100%">
-            <sections>
+            <column width="100%">
+              <sections>
                 <section name="notes" showlabel="true" showbar="false" columns="1" id="{173e0fdf-ae91-5e6c-a780-6d6740550164}">
                   <labels>
                     <label description="Notes" languagecode="1033" />
@@ -257,32 +257,32 @@
                     </row>
                   </rows>
                 </section>
-            </sections>
-          </column>
+              </sections>
+            </column>
           </columns>
         </tab>
       </tabs>
       <header id="{1806de30-d665-5282-8dfe-907876a1660e}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
         <rows>
           <row>
-          <cell id="{69fc177d-22bd-5ba4-af48-c1644edb7d85}" showlabel="true" locklevel="0">
-                        <labels>
-                          <label description="Status Reason" languagecode="1033" />
-                        </labels>
-                        <control id="header_statuscode" classid="{5D68B988-0661-4db2-BC3E-17598AD3BE6C}" datafieldname="statuscode" disabled="false" />
-                      </cell>
-          <cell id="{d495a39c-78c8-5de7-a293-ec138cb4d0d1}" showlabel="true" locklevel="0">
-                        <labels>
-                          <label description="Priority" languagecode="1033" />
-                        </labels>
-                        <control id="header_cd_priority" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="cd_priority" disabled="false" />
-                      </cell>
-          <cell id="{f4c1fef5-fe8a-563d-847f-867cd04ef935}" showlabel="true" locklevel="0">
-                        <labels>
-                          <label description="Owner" languagecode="1033" />
-                        </labels>
-                        <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false" />
-                      </cell>
+            <cell id="{69fc177d-22bd-5ba4-af48-c1644edb7d85}" showlabel="true" locklevel="0">
+              <labels>
+                <label description="Status Reason" languagecode="1033" />
+              </labels>
+              <control id="header_statuscode" classid="{5D68B988-0661-4db2-BC3E-17598AD3BE6C}" datafieldname="statuscode" disabled="false" />
+            </cell>
+            <cell id="{d495a39c-78c8-5de7-a293-ec138cb4d0d1}" showlabel="true" locklevel="0">
+              <labels>
+                <label description="Priority" languagecode="1033" />
+              </labels>
+              <control id="header_cd_priority" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="cd_priority" disabled="false" />
+            </cell>
+            <cell id="{f4c1fef5-fe8a-563d-847f-867cd04ef935}" showlabel="true" locklevel="0">
+              <labels>
+                <label description="Owner" languagecode="1033" />
+              </labels>
+              <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false" />
+            </cell>
           </row>
         </rows>
       </header>

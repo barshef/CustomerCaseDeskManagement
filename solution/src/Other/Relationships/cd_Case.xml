@@ -18,7 +18,7 @@
     <ReferencingAttributeName>cd_CaseId</ReferencingAttributeName>
     <RelationshipDescription>
       <Descriptions>
-        <Description description="Notes of the case" languagecode="1033" />
+        <Description description="Case the note belongs to." languagecode="1033" />
       </Descriptions>
     </RelationshipDescription>
     <EntityRelationshipRoles>
@@ -53,7 +53,7 @@
     <ReferencingAttributeName>cd_CaseId</ReferencingAttributeName>
     <RelationshipDescription>
       <Descriptions>
-        <Description description="Refund approvals of the case" languagecode="1033" />
+        <Description description="Refund case the approval is for." languagecode="1033" />
       </Descriptions>
     </RelationshipDescription>
     <EntityRelationshipRoles>

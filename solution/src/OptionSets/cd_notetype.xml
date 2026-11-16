@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<optionset Name="cd_notetype" localizedName="Note Type" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<optionset Name="cd_notetype" localizedName="Note Type" description="Whether a case note is internal or customer-facing." xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <OptionSetType>picklist</OptionSetType>
   <IsGlobal>1</IsGlobal>
   <IntroducedVersion>1.0</IntroducedVersion>

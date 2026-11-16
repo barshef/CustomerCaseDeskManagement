@@ -21,7 +21,7 @@
   <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
   <ProcessTriggerScope>2</ProcessTriggerScope>
   <ModernFlowType>0</ModernFlowType>
-  <PrimaryEntity>cd_slapolicy</PrimaryEntity>
+  <PrimaryEntity>cd_SlaPolicy</PrimaryEntity>
   <LocalizedNames>
     <LocalizedName languagecode="1033" description="CaseDesk - Warning hours less than resolution hours" />
   </LocalizedNames>

@@ -21,7 +21,7 @@
   <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
   <ProcessTriggerScope>1</ProcessTriggerScope>
   <ModernFlowType>0</ModernFlowType>
-  <PrimaryEntity>cd_case</PrimaryEntity>
+  <PrimaryEntity>cd_Case</PrimaryEntity>
   <LocalizedNames>
     <LocalizedName languagecode="1033" description="CaseDesk - Refund amount visibility" />
   </LocalizedNames>

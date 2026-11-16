@@ -20,6 +20,7 @@
   <SdkMessageProcessingStepImages>
     <SdkMessageProcessingStepImage Name="PreImage">
       <SdkMessageProcessingStepImageId>{84535399-58bc-4884-a02d-62dfaa1cb1f3}</SdkMessageProcessingStepImageId>
+      <Attributes></Attributes>
       <EntityAlias>PreImage</EntityAlias>
       <ImageType>0</ImageType>
       <MessagePropertyName>Target</MessagePropertyName>

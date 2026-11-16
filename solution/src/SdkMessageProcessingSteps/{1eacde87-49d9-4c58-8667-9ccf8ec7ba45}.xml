@@ -18,18 +18,19 @@
   <SupportedDeployment>0</SupportedDeployment>
   <IntroducedVersion>1.0</IntroducedVersion>
   <SdkMessageProcessingStepImages>
+    <SdkMessageProcessingStepImage Name="PostImage">
+      <SdkMessageProcessingStepImageId>{4edb3960-fa25-432e-a224-ea1dc22533fa}</SdkMessageProcessingStepImageId>
+      <Attributes></Attributes>
+      <EntityAlias>PostImage</EntityAlias>
+      <ImageType>1</ImageType>
+      <MessagePropertyName>Target</MessagePropertyName>
+      <IsCustomizable>1</IsCustomizable>
+    </SdkMessageProcessingStepImage>
     <SdkMessageProcessingStepImage Name="PreImage">
       <SdkMessageProcessingStepImageId>{4e907000-2124-4865-95af-f8aafbbc2f89}</SdkMessageProcessingStepImageId>
       <Attributes>statuscode</Attributes>
       <EntityAlias>PreImage</EntityAlias>
       <ImageType>0</ImageType>
-      <MessagePropertyName>Target</MessagePropertyName>
-      <IsCustomizable>1</IsCustomizable>
-    </SdkMessageProcessingStepImage>
-    <SdkMessageProcessingStepImage Name="PostImage">
-      <SdkMessageProcessingStepImageId>{4edb3960-fa25-432e-a224-ea1dc22533fa}</SdkMessageProcessingStepImageId>
-      <EntityAlias>PostImage</EntityAlias>
-      <ImageType>1</ImageType>
       <MessagePropertyName>Target</MessagePropertyName>
       <IsCustomizable>1</IsCustomizable>
     </SdkMessageProcessingStepImage>

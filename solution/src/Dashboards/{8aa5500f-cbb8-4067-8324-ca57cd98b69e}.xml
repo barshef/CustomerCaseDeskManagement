@@ -27,6 +27,9 @@
                     <rows>
                       <row>
                         <cell id="{56a8fe7b-a2e6-5fc0-9a48-79c7d75df6c9}" showlabel="false" colspan="1" auto="false" rowspan="12">
+                          <labels>
+                            <label description="Cases" languagecode="1033" />
+                          </labels>
                           <control id="MyOpenByPriority" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{7bf4a964-d490-5990-9891-cd3a80b38714}">
                             <parameters>
                               <ViewId>{a9d1ee2c-a1a0-4aaa-9892-3d696a834277}</ViewId>
@@ -47,6 +50,9 @@
                           </control>
                         </cell>
                         <cell id="{01fc482f-5b08-572a-b854-28e2fac64f96}" showlabel="false" colspan="1" auto="false" rowspan="12">
+                          <labels>
+                            <label description="Cases" languagecode="1033" />
+                          </labels>
                           <control id="MyOpenCases" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{8298f632-76e8-5f1a-afdb-286d6566ee9a}">
                             <parameters>
                               <ViewId>{a9d1ee2c-a1a0-4aaa-9892-3d696a834277}</ViewId>

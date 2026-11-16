@@ -11,11 +11,11 @@
     <PluginType AssemblyQualifiedName="CaseDesk.Plugins.CasePreUpdatePlugin, CaseDesk.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4084e1bede633e50" PluginTypeId="63257b08-2733-49a1-812f-0c8fec9897aa" Name="CaseDesk.Plugins.CasePreUpdatePlugin">
       <FriendlyName>CasePreUpdatePlugin</FriendlyName>
     </PluginType>
-    <PluginType AssemblyQualifiedName="CaseDesk.Plugins.PublishCaseClosedPlugin, CaseDesk.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4084e1bede633e50" PluginTypeId="c0ae17c8-990e-4a85-a590-4786275bca96" Name="CaseDesk.Plugins.PublishCaseClosedPlugin">
-      <FriendlyName>PublishCaseClosedPlugin</FriendlyName>
-    </PluginType>
     <PluginType AssemblyQualifiedName="CaseDesk.Plugins.EscalateCasePlugin, CaseDesk.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4084e1bede633e50" PluginTypeId="7a777763-bbbd-4a4c-aace-ac6f87a13ca0" Name="CaseDesk.Plugins.EscalateCasePlugin">
       <FriendlyName>EscalateCasePlugin</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="CaseDesk.Plugins.PublishCaseClosedPlugin, CaseDesk.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4084e1bede633e50" PluginTypeId="c0ae17c8-990e-4a85-a590-4786275bca96" Name="CaseDesk.Plugins.PublishCaseClosedPlugin">
+      <FriendlyName>PublishCaseClosedPlugin</FriendlyName>
     </PluginType>
   </PluginTypes>
 </PluginAssembly>

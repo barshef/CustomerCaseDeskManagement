@@ -18,7 +18,7 @@
     <ReferencingAttributeName>cd_SlaPolicyId</ReferencingAttributeName>
     <RelationshipDescription>
       <Descriptions>
-        <Description description="SLA policy applied to the case" languagecode="1033" />
+        <Description description="SLA policy applied to the case. Set by the CaseDesk plugin from the priority." languagecode="1033" />
       </Descriptions>
     </RelationshipDescription>
     <EntityRelationshipRoles>

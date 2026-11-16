@@ -1063,12 +1063,9 @@
       <IsEnabledForExternalChannels>0</IsEnabledForExternalChannels>
       <IsMSTeamsIntegrationEnabled>0</IsMSTeamsIntegrationEnabled>
       <IsSolutionAware>0</IsSolutionAware>
-      <HasRelatedNotes>False</HasRelatedNotes>
-      <HasRelatedActivities>False</HasRelatedActivities>
     </entity>
   </EntityInfo>
   <FormXml />
   <SavedQueries />
-  <Visualizations />
   <RibbonDiffXml />
 </Entity>

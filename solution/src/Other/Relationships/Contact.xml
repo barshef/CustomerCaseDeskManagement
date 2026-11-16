@@ -18,7 +18,7 @@
     <ReferencingAttributeName>cd_ContactId</ReferencingAttributeName>
     <RelationshipDescription>
       <Descriptions>
-        <Description description="Requester of the case" languagecode="1033" />
+        <Description description="Contact who raised the case; receives the customer emails." languagecode="1033" />
       </Descriptions>
     </RelationshipDescription>
     <EntityRelationshipRoles>

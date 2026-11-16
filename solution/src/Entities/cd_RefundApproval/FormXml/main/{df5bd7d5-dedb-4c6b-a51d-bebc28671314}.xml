@@ -12,8 +12,8 @@
             <label description="General" languagecode="1033" />
           </labels>
           <columns>
-          <column width="100%">
-            <sections>
+            <column width="100%">
+              <sections>
                 <section name="approval" showlabel="true" showbar="false" columns="1" id="{c14d82ea-b56a-5dc4-a2ce-fb8c035d516a}">
                   <labels>
                     <label description="Refund Approval" languagecode="1033" />
@@ -77,8 +77,8 @@
                     </row>
                   </rows>
                 </section>
-            </sections>
-          </column>
+              </sections>
+            </column>
           </columns>
         </tab>
       </tabs>

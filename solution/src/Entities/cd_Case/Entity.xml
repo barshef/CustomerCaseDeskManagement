@@ -94,7 +94,7 @@
           <Name>cd_casenumber</Name>
           <LogicalName>cd_casenumber</LogicalName>
           <RequiredLevel>none</RequiredLevel>
-          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+          <DisplayMask>ReadOnlyInUI|ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
           <ImeMode>auto</ImeMode>
           <ValidForUpdateApi>1</ValidForUpdateApi>
           <ValidForReadApi>1</ValidForReadApi>
@@ -1568,6 +1568,7 @@
       <IsDocumentRecommendationsEnabled>0</IsDocumentRecommendationsEnabled>
       <IsBPFEntity>0</IsBPFEntity>
       <OwnershipTypeMask>UserOwned</OwnershipTypeMask>
+      <EntityMask>ActivityPointer</EntityMask>
       <IsAuditEnabled>1</IsAuditEnabled>
       <IsRetrieveAuditEnabled>0</IsRetrieveAuditEnabled>
       <IsRetrieveMultipleAuditEnabled>0</IsRetrieveMultipleAuditEnabled>

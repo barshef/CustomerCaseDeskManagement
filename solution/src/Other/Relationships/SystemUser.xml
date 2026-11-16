@@ -18,7 +18,7 @@
     <ReferencingAttributeName>cd_ApproverId</ReferencingAttributeName>
     <RelationshipDescription>
       <Descriptions>
-        <Description description="Supervisor who decided the approval" languagecode="1033" />
+        <Description description="Supervisor who decided the approval." languagecode="1033" />
       </Descriptions>
     </RelationshipDescription>
     <EntityRelationshipRoles>
@@ -53,7 +53,7 @@
     <ReferencingAttributeName>cd_RequestedById</ReferencingAttributeName>
     <RelationshipDescription>
       <Descriptions>
-        <Description description="Agent who requested the approval" languagecode="1033" />
+        <Description description="Agent who resolved the case and triggered the approval." languagecode="1033" />
       </Descriptions>
     </RelationshipDescription>
     <EntityRelationshipRoles>
